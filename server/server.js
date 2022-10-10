@@ -2,10 +2,11 @@ const express = require("express");
 const app = express(); //express app
 const mongoose = require("mongoose");
 const authroutes = require("./routes/authroute");
+const otherroutes = require("./routes/otherroute");
 const cors = require("cors");
 require("dotenv").config();
 app.use(cors());
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 // url to connect mongodb
 const link = `mongodb+srv://${process.env.PASSWORD}:mongodb2002@cluster0.8et7m.mongodb.net/${process.env.DATABASENAME}`;
 mongoose
@@ -20,3 +21,4 @@ app.use(express.urlencoded({ extended: false })); // parsing form data
 app.use(express.json()); // parsing json data
 
 app.use(authroutes);
+app.use(otherroutes);
