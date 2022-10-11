@@ -1,25 +1,26 @@
 import React from "react";
 import { servicesList, teamMemberList, iconsList } from "../../constants/about";
-import "./about.css";
+import aboutStyles from "./about.module.css";
 
 export default function About() {
+  console.log(aboutStyles);
   return (
     <>
-      <section className="about" id="about">
-        <h1 className="heading">
+      <section className={aboutStyles.about} id={aboutStyles.about}>
+        <h1 className={aboutStyles.heading}>
           {" "}
           <span>about</span> Dr. Helpy
         </h1>
 
-        <div className="row">
-          <div className="image">
+        <div className={aboutStyles.row}>
+          <div className={aboutStyles.image}>
             <img
               src="images/medicine-concept-illustration_114360-2802.jpg"
               alt=""
             />
           </div>
 
-          <div className="content">
+          <div className={aboutStyles.content}>
             <h3>we take care of your healthy life</h3>
             <h4>We are - India's most convenient online pharmacy</h4>
             <p>
@@ -40,16 +41,16 @@ export default function About() {
             </p>
           </div>
 
-          <section className="services" id="services">
-            <h1 className="heading">
+          <section className={aboutStyles.services} id={aboutStyles.services}>
+            <h1 className={aboutStyles.heading}>
               {" "}
               WHAT <span>WE DO</span>{" "}
             </h1>
 
-            <div className="box-container">
+            <div className={aboutStyles["box-container"]}>
               {servicesList.map((ele) => {
                 return (
-                  <div className="box">
+                  <div className={aboutStyles.box}>
                     <i className={`fas ${ele.class}`}></i>
                     <h3>{ele.h3}</h3>
                     <p>{ele.p}</p>
@@ -59,16 +60,16 @@ export default function About() {
             </div>
           </section>
 
-          <section className="team" id="team">
-            <h1 className="heading">
+          <section className={aboutStyles.team} id={aboutStyles.team}>
+            <h1 className={aboutStyles.heading}>
               {" "}
               our <span>team</span>{" "}
             </h1>
 
-            <div className="box-container">
+            <div className={aboutStyles["box-container"]}>
               {teamMemberList.map((ele) => {
                 return (
-                  <div className="box">
+                  <div className={aboutStyles.box}>
                     <h3>{ele.h3}</h3>
                     <p>{ele.p}</p>
                   </div>
@@ -77,10 +78,10 @@ export default function About() {
             </div>
           </section>
 
-          <section className="icons-container">
+          <section className={aboutStyles["icons-container"]}>
             {iconsList.map((ele) => {
               return (
-                <div className="icons">
+                <div className={aboutStyles.icons}>
                   <i className={`fas ${ele.class}`}></i>
                   <h3>{ele.h3}</h3>
                   <p>{ele.p}</p>
@@ -91,13 +92,13 @@ export default function About() {
         </div>
       </section>
 
-      <section className="home" id="home">
-        <div className="image">
+      <section className={aboutStyles.home} id={aboutStyles.home}>
+        <div className={aboutStyles.image}>
           <img src="images/contactus2.jpg" />
         </div>
 
-        <div className="content">
-          <h1 className="heading1">
+        <div className={aboutStyles.content}>
+          <h1 className={aboutStyles.heading1}>
             {" "}
             stay safe <span>stay healthy</span>{" "}
           </h1>

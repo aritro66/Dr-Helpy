@@ -305,9 +305,9 @@ section {
 } */
 
 .home {
-  background: url(https://wallpapercave.com/wp/wp2968489.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
+  background: url(https://wallpapercave.com/wp/wp2968489.jpg) no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 .home .row {

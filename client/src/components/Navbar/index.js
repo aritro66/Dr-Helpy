@@ -1,24 +1,28 @@
 import React from "react";
 
-export default function Navbar() {
+export default function Navbar({ styles }) {
   return (
-    <header className="header">
-      <div className="header-1">
-        <a href="#" className="logo">
+    <header className={styles.header}>
+      <div className={styles["header-1"]}>
+        <a href="#" className={styles.logo}>
           {" "}
           <i className="fa fa-heartbeat"></i> Dr. Helpy
         </a>
 
-        <div className="icons">
-          <div id="search-btn" className="fas fa-search"></div>
+        <div className={styles.icons}>
+          <div id={styles["search-btn"]} className="fas fa-search"></div>
 
           <a href="#" className=""></a>
           <a href="/addtocart" className="bi bi-cart3">
-            <span id="cartno"></span>
+            <span id={styles["cartno"]}></span>
           </a>
-          <div className="dropdown" style={{ display: "inline" }}>
-            <a href="#" className="bi bi-person-circle" id="toggleclick"></a>
-            <div className="dropdown-content">
+          <div className={styles.dropdown} style={{ display: "inline" }}>
+            <a
+              href="#"
+              className="bi bi-person-circle"
+              id={styles.toggleclick}
+            ></a>
+            <div className={styles["dropdown-content"]}>
               <a href="/myaccount">My Acount</a>
               <a href="/logout">Logout</a>
             </div>
@@ -26,8 +30,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="header-2">
-        <nav className="navbar">
+      <div className={styles["header-2"]}>
+        <nav className={styles.navbar}>
           <a href="/home">home</a>
           <a href="#featured">featured</a>
           <a href="#reviews">reviews</a>

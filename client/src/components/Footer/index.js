@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Footer() {
+export default function Footer({ styles }) {
   return (
-    <section className="footer">
-      <div className="box-container">
-        <div className="box">
+    <section className={styles.footer}>
+      <div className={styles["box-container"]}>
+        <div className={styles.box}>
           <h3>our locations</h3>
           <a href="#">
             {" "}
@@ -24,7 +24,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="box">
+        <div className={styles.box}>
           <h3>quick links</h3>
           <a href="#">
             {" "}
@@ -48,7 +48,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="box">
+        <div className={styles.box}>
           <h3>extra links</h3>
           <a href="/myaccount">
             {" "}
@@ -64,7 +64,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="box">
+        <div className={styles.box}>
           <h3>contact info</h3>
           <a href="#">
             {" "}
@@ -82,7 +82,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="share">
+      <div className={styles.share}>
         <a href="#" className="facebook">
           <img src="./images/fbicon.png" alt="" />
         </a>
@@ -100,7 +100,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <div className="credit">
+      <div className={styles.credit}>
         {" "}
         created by <span>FFSD Group 39</span> | all rights reserved!{" "}
       </div>
