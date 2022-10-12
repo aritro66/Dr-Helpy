@@ -7,12 +7,16 @@ import Disease from "./pages/Disease";
 import DiseaseInfo from "./pages/Disease/diseaseInfo";
 import ProductInfo from "./pages/Product/productInfo";
 import Landing from "./pages/Landing";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/product" element={<Products />} />
