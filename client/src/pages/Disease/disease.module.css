@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.cont h1 {
+  text-align: center;
+  font-family: "Castellar";
+  background-color: #17b56b;
+  padding: 20px;
+  margin-top: 0%;
+}
+.cont h2 {
+  text-align: center;
+  font-family: "Castellar";
+  background-color: #0ca833;
+  padding: 20px;
+  margin-top: 0%;
+}
+.cont .navbar {
+  margin-top: 1%;
+}
+.cont {
+  height: 100%;
+  min-height: 100vh;
+  /* background-image: url(/images/bgg.jpg); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% 100%; */
+}
+.main {
+  text-align: center;
+  text-decoration: underline rgb(37, 179, 84) 5px;
+}
+.main strong {
+  font-size: 3rem;
+  color: rgb(208, 44, 214);
+}
+.cont p {
+  font-family: "Agency FB";
+  font-size: 1.5rem;
+  /* color: aliceblue; */
+}
+.cont strong {
+  font-size: 2rem;
+}
+.cont li {
+  font-size: 1.5rem;
+  /* color: aliceblue; */
+}
+.cont hr.design {
+  border: 0;
+  height: 5rem;
+  background-image: url(../../../public/images/design.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.List {
+  font-size: 2rem;
+}
+.desc {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Segoe UI";
+  color: rgb(14, 73, 87);
+}
+.cont img {
+  width: 350px;
+  height: 250px;
+  display: block;
+  margin: auto;
+}

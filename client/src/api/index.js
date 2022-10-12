@@ -9,4 +9,7 @@ const API = axios.create({ baseURL: "http://localhost:4001" });
 //   return req;
 // });
 
-export const fetchProductLists = (id) => API.get(`/productlist`);
+export const fetchProductLists = () => API.get(`/productlist`);
+export const fetchDiseaseLists = () => API.get("/disease");
+export const fetchDiseaseListsById = (id) => API.get(`/disease/${id}`);
+export const fetchProductListsById = (id) => API.get(`/productlist/${id}`);

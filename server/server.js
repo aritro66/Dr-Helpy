@@ -2,7 +2,9 @@ const express = require("express");
 const app = express(); //express app
 const mongoose = require("mongoose");
 const authroutes = require("./routes/authroute");
-const otherroutes = require("./routes/otherroute");
+const productroutes = require("./routes/productroute");
+const diseaseroutes = require("./routes/diseaseroute");
+
 const cors = require("cors");
 require("dotenv").config();
 app.use(cors());
@@ -21,4 +23,5 @@ app.use(express.urlencoded({ extended: false })); // parsing form data
 app.use(express.json()); // parsing json data
 
 app.use(authroutes);
-app.use(otherroutes);
+app.use("/disease", diseaseroutes);
+app.use("/productlist", productroutes);

@@ -36,7 +36,7 @@ export default function Products() {
                     <div className="col-md-7 col-sm-12 col-xs-12">
                       <div className={productsStyles["product-deatil"]}>
                         <h5 className={productsStyles.name}>
-                          <a href={`product/${ele._id}`}>{ele.name}</a>
+                          <a href={`/product/${ele._id}`}>{ele.name}</a>
                           <a href="#">
                             <span>Medical</span>
                           </a>
