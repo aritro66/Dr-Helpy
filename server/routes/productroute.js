@@ -4,9 +4,10 @@ const {
   productList,
   productListById,
 } = require("../controllers/productcontroller");
+const { verify } = require("../middlewares/auth");
 
-router.get("/", productList);
+router.get("/", verify, productList);
 
-router.get("/:id", productListById);
+router.get("/:id", verify, productListById);
 
 module.exports = router;

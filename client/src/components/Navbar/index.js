@@ -1,6 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../actions/authactions";
 
 export default function Navbar({ styles }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    dispatch(logout(navigate));
+  };
   return (
     <header className={styles.header}>
       <div className={styles["header-1"]}>
@@ -24,7 +32,9 @@ export default function Navbar({ styles }) {
             ></a>
             <div className={styles["dropdown-content"]}>
               <a href="/myaccount">My Acount</a>
-              <a href="/logout">Logout</a>
+              <a href="" onClick={handleClick}>
+                Logout
+              </a>
             </div>
           </div>
         </div>

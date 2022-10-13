@@ -9,20 +9,53 @@ import ProductInfo from "./pages/Product/productInfo";
 import Landing from "./pages/Landing";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-
+import { useSelector } from "react-redux";
+import MyAccount from "./pages/MyAccount";
 function App() {
+  const { loginin } = useSelector((state) => state.authReducer);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/product" element={<Products />} />
-        <Route path="/product/:id" element={<ProductInfo />} />
-        <Route path="/disease" element={<Disease />} />
-        <Route path="/disease/:id" element={<DiseaseInfo />} />
+        <Route
+          path="/"
+          element={!loginin ? <Landing /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/signup"
+          element={!loginin ? <Signup /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/login"
+          element={!loginin ? <Login /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/home"
+          element={loginin ? <Home /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/about"
+          element={loginin ? <About /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/product"
+          element={loginin ? <Products /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/product/:id"
+          element={loginin ? <ProductInfo /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/disease"
+          element={loginin ? <Disease /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/disease/:id"
+          element={loginin ? <DiseaseInfo /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/myaccount"
+          element={loginin ? <MyAccount /> : <Navigate to="/" />}
+        />
       </Routes>
     </BrowserRouter>
   );

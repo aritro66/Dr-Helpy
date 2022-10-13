@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import loginStyles from "./login.module.css";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/authactions";
 export default function Login() {
+  const initialState = { email: "", password: "" };
   const [showPassword, setShowPassword] = useState(false);
+  const [form, setForm] = useState(initialState);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ ...form }, navigate));
+  };
+  console.log(form);
   return (
     <div id={loginStyles.login}>
-      <form id={loginStyles.form} autocomplete="off">
+      <form id={loginStyles.form} onSubmit={handleSubmit}>
         <div id={loginStyles.imgholder}>
           <img src="./images/ezgif.com-gif-maker.gif" alt="" />
           <div id={loginStyles.eyeband}></div>
@@ -17,6 +33,7 @@ export default function Login() {
             id={loginStyles.email}
             placeholder="Email"
             name="email"
+            onChange={handleChange}
             required
           />
           <br />
@@ -27,6 +44,7 @@ export default function Login() {
               id={loginStyles.pass}
               placeholder="Password"
               name="password"
+              onChange={handleChange}
               required
             />
             <i

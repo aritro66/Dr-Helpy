@@ -3,7 +3,6 @@ import { servicesList, teamMemberList, iconsList } from "../../constants/about";
 import aboutStyles from "./about.module.css";
 
 export default function About() {
-  console.log(aboutStyles);
   return (
     <>
       <section className={aboutStyles.about} id={aboutStyles.about}>

@@ -15,7 +15,7 @@ const generateAccessToken = (user) => {
     },
     process.env.JWTKEY,
     {
-      expiresIn: "5s",
+      expiresIn: "10s",
     }
   );
 };
@@ -115,8 +115,36 @@ const logout = (req, res) => {
   res.status(200).json("You logged out successfully.");
 };
 
+const refresh = (req, res) => {
+  //take the refresh token from the user
+  const refreshToken = req.body.token;
+
+  //send error if there is no token or it's invalid
+  if (!refreshToken) return res.status(401).json("You are not authenticated!");
+  if (!refreshTokens.includes(refreshToken)) {
+    return res.status(403).json("Refresh token is not valid!");
+  }
+  jwt.verify(refreshToken, process.env.JWTREFRESHKEY, (err, user) => {
+    err && console.log(err);
+    refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+
+    const newAccessToken = generateAccessToken(user);
+    const newRefreshToken = generateRefreshToken(user);
+
+    refreshTokens.push(newRefreshToken);
+
+    res.status(200).json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    });
+  });
+
+  //if everything is ok, create new access token, refresh token and send to user
+};
+
 module.exports = {
   login,
   signup,
   logout,
+  refresh,
 };
