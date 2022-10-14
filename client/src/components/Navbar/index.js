@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../actions/authactions";
 
@@ -9,6 +9,7 @@ export default function Navbar({ styles }) {
   const handleClick = () => {
     dispatch(logout(navigate));
   };
+  const cartdata = useSelector((state) => state.cartreducer.data);
   return (
     <header className={styles.header}>
       <div className={styles["header-1"]}>
@@ -21,8 +22,8 @@ export default function Navbar({ styles }) {
           <div id={styles["search-btn"]} className="fas fa-search"></div>
 
           <a href="#" className=""></a>
-          <a href="/addtocart" className="bi bi-cart3">
-            <span id={styles["cartno"]}></span>
+          <a href="/cartlist" className="bi bi-cart3">
+            <span id={styles["cartno"]}>{cartdata.length}</span>
           </a>
           <div className={styles.dropdown} style={{ display: "inline" }}>
             <a

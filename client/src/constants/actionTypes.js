@@ -8,3 +8,7 @@ export const LOGIN = "LOGIN";
 export const SIGNUP = "SIGNUP";
 export const LOGOUT = "LOGOUT";
 export const ERROR = "ERROR";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const DELETE_CART = "DELETE_CART";
+export const INC = "INC";
+export const DESC = "DESC";

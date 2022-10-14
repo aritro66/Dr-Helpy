@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
 import MyAccount from "./pages/MyAccount";
+import CartList from "./pages/CartList";
 function App() {
   const { loginin } = useSelector((state) => state.authReducer);
   return (
@@ -55,6 +56,14 @@ function App() {
         <Route
           path="/myaccount"
           element={loginin ? <MyAccount /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/myaccount"
+          element={loginin ? <MyAccount /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/cartlist"
+          element={loginin ? <CartList /> : <Navigate to="/" />}
         />
       </Routes>
     </BrowserRouter>
