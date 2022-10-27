@@ -1,11 +1,12 @@
 import { LOGIN, LOGOUT, SIGNUP, ERROR } from "../constants/actionTypes";
 const initialState = {
   loginin: false,
-  error: null,
+  errors: null,
   fname: "",
   lname: "",
   phno: "",
   email: "",
+  admin: false,
 };
 
 export default function authReducer(state = initialState, action) {
@@ -20,6 +21,7 @@ export default function authReducer(state = initialState, action) {
         phno: action.payload.phno,
         email: action.payload.email,
         errors: null,
+        admin: action.payload.admin,
       };
     case SIGNUP:
       localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
@@ -31,8 +33,10 @@ export default function authReducer(state = initialState, action) {
         phno: action.payload.phno,
         email: action.payload.email,
         errors: null,
+        admin: action.payload.admin,
       };
     case LOGOUT:
+      console.log("huha");
       localStorage.removeItem("profile");
       return {
         ...state,
@@ -42,6 +46,7 @@ export default function authReducer(state = initialState, action) {
         phno: "",
         email: "",
         errors: null,
+        admin: false,
       };
     case ERROR:
       return { ...state, error: action.error };
@@ -56,6 +61,7 @@ export default function authReducer(state = initialState, action) {
           phno: JSON.parse(localStorage.getItem("profile")).phno,
           email: JSON.parse(localStorage.getItem("profile")).email,
           errors: null,
+          admin: JSON.parse(localStorage.getItem("profile")).admin,
         };
   }
 }

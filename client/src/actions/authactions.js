@@ -33,7 +33,7 @@ export const logout = (router) => async (dispatch) => {
     );
     dispatch({ type: LOGOUT, payload: data });
 
-    router("/");
+    router("/login");
   } catch (error) {
     dispatch({ type: ERROR, error });
     console.log(error);

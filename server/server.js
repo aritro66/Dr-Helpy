@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const authroutes = require("./routes/authroute");
 const productroutes = require("./routes/productroute");
 const diseaseroutes = require("./routes/diseaseroute");
+const adminroutes = require("./routes/adminroute");
 
 const cors = require("cors");
 require("dotenv").config();
@@ -25,3 +26,4 @@ app.use(express.json()); // parsing json data
 app.use(authroutes);
 app.use("/disease", diseaseroutes);
 app.use("/productlist", productroutes);
+app.use(adminroutes);

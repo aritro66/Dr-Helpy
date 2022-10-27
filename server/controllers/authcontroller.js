@@ -12,6 +12,7 @@ const generateAccessToken = (user) => {
       lname: user.lname,
       email: user.email,
       phno: user.phno,
+      admin: user.admin,
     },
     process.env.JWTKEY,
     {
@@ -28,6 +29,7 @@ const generateRefreshToken = (user) => {
       lname: user.lname,
       email: user.email,
       phno: user.phno,
+      admin: user.admin,
     },
     process.env.JWTREFRESHKEY
   );
@@ -54,6 +56,7 @@ const login = async (req, res) => {
           lname: data2[0].lname,
           email: data2[0].email,
           phno: data2[0].phno,
+          admin: data2[0].admin,
           accessToken,
           refreshToken,
         });
@@ -97,6 +100,7 @@ const signup = async (req, res) => {
         lname: data[0].lname,
         email: data[0].email,
         phno: data[0].phno,
+        admin: data[0].admin,
         accessToken,
         refreshToken,
       });
