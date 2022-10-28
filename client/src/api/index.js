@@ -49,3 +49,7 @@ export const LogIn = (formData) => API.post("/login", formData);
 export const SignUp = (formData) => API.post("/signup", formData);
 export const LogOut = (refreshToken) =>
   API.post("/logout", { token: refreshToken });
+export const payment = (order) => API.post("/checkout", { cart: order });
+export const confirm = (order, email) =>
+  API.post("/confirm", { cart: order, email: email });
+export const orders = (email) => API.post("/orders", { email: email });

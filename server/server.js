@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express(); //express app
+require("dotenv").config();
 const mongoose = require("mongoose");
 const authroutes = require("./routes/authroute");
 const productroutes = require("./routes/productroute");
 const diseaseroutes = require("./routes/diseaseroute");
 const adminroutes = require("./routes/adminroute");
+const paymentroutes = require("./routes/paymentroute");
+const orderroutes = require("./routes/orderroute");
 
 const cors = require("cors");
-require("dotenv").config();
 app.use(cors());
 const PORT = process.env.PORT || 4001;
 // url to connect mongodb
@@ -27,3 +29,5 @@ app.use(authroutes);
 app.use("/disease", diseaseroutes);
 app.use("/productlist", productroutes);
 app.use(adminroutes);
+app.use(paymentroutes);
+app.use(orderroutes);

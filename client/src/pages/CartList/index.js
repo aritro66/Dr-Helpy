@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletecart, inc, desc } from "../../actions/cartactions";
+import { payment } from "../../api";
 
 export default function CartList() {
   const dispatch = useDispatch();
@@ -15,6 +16,15 @@ export default function CartList() {
 
   const handleDesc = (id) => {
     dispatch(desc(id));
+  };
+
+  const proceedToPay = async () => {
+    try {
+      const { data } = await payment(cartdata);
+      window.location.href = data.url;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -104,6 +114,7 @@ export default function CartList() {
                   type="button"
                   className="btn btn-warning btn-block btn-lg"
                   id="payment"
+                  onClick={proceedToPay}
                 >
                   Proceed to Pay
                 </button>

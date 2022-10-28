@@ -1,4 +1,10 @@
-import { ADD_TO_CART, DELETE_CART, DESC, INC } from "../constants/actionTypes";
+import {
+  ADD_TO_CART,
+  DELETE_CART,
+  DESC,
+  INC,
+  EMPTY_CART,
+} from "../constants/actionTypes";
 const initialState = {
   data: [],
 };
@@ -34,6 +40,9 @@ export default function cartreducer(state = initialState, action) {
       }
       localStorage.setItem("cart", JSON.stringify(newData_desc));
       return { ...state, data: newData_desc };
+    case EMPTY_CART:
+      localStorage.removeItem("cart");
+      return { data: [] };
     default:
       if (localStorage.getItem("cart") === null) return state;
       else return { ...state, data: JSON.parse(localStorage.getItem("cart")) };

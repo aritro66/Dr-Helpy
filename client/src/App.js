@@ -13,6 +13,9 @@ import { useSelector } from "react-redux";
 import MyAccount from "./pages/MyAccount";
 import CartList from "./pages/CartList";
 import Admin from "./pages/Admin";
+import Success from "./pages/Success";
+import Orders from "./pages/Orders";
+import Doctors from "./pages/Doctors";
 function App() {
   const { loginin, admin } = useSelector((state) => state.authReducer);
   return (
@@ -69,6 +72,18 @@ function App() {
         <Route
           path="/admin"
           element={loginin && admin ? <Admin /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/orders"
+          element={loginin ? <Orders /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/doctor"
+          element={loginin ? <Doctors /> : <Navigate to="/" />}
+        />
+        <Route
+          path="success"
+          element={loginin ? <Success /> : <Navigate to="/home" />}
         />
       </Routes>
     </BrowserRouter>
