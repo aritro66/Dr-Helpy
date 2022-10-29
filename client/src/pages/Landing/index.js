@@ -1,5 +1,6 @@
 import React from "react";
 import landingStyles from "./landing.module.css";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -26,9 +27,9 @@ export default function Landing() {
             </div>
             <br />
 
-            <a href="./signup" id={landingStyles.service}>
+            <Link to="./signup" id={landingStyles.service}>
               Get our services
-            </a>
+            </Link>
           </div>
         </div>
         <div id={landingStyles.imgholder}>

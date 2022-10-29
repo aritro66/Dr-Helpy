@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import diseaseStyles from "./disease.module.css";
 import { getDiseasesById } from "../../actions/diseaseactions";
 import { useParams } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import Styles from "../Home/home.module.css";
 
 export default function DiseaseInfo() {
   const { id } = useParams();
-
   const dispatch = useDispatch();
   const data = useSelector((state) => state.diseasereducer?.data?.data);
   useEffect(() => {
@@ -15,6 +17,7 @@ export default function DiseaseInfo() {
   console.log(data);
   return (
     <>
+      <Navbar styles={Styles} />
       <div
         id={diseaseStyles["cont"]}
         style={{ padding: "20px 30px", lineHeight: "200%" }}
@@ -45,6 +48,7 @@ export default function DiseaseInfo() {
 
         <hr className={diseaseStyles["design"]} />
       </div>
+      <Footer styles={Styles} />
     </>
   );
 }

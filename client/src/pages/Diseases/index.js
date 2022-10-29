@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import diseaseStyles from "./disease.module.css";
-import navStyles from "../Home/home.module.css";
+import Styles from "../Home/home.module.css";
 import { getDiseases } from "../../actions/diseaseactions";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Disease from "../../components/Diseases/Disease";
 
 export default function Diseases() {
@@ -15,7 +16,7 @@ export default function Diseases() {
   console.log(data);
   return (
     <>
-      <Navbar styles={navStyles} />
+      <Navbar styles={Styles} />
       <div className={diseaseStyles["header"]}>
         <h1>
           <strong>Diseases and their cure</strong>
@@ -36,6 +37,7 @@ export default function Diseases() {
           </ul>
         </div>
       </div>
+      <Footer styles={Styles} />
     </>
   );
 }

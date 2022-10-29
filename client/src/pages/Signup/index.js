@@ -3,6 +3,7 @@ import signupStyles from "./signup.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/authactions";
+import { Link } from "react-router-dom";
 export default function Signup() {
   const initialState = {
     fname: "",
@@ -128,7 +129,7 @@ export default function Signup() {
           <span id={signupStyles.errortext}>{/* <%= error %> */}</span>
           <br />
           <span>Already have an Account? </span>
-          <a href="/login">Log In</a>
+          <Link to="/login">Log In</Link>
         </div>
       </form>
     </div>

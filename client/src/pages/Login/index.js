@@ -3,6 +3,7 @@ import loginStyles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/authactions";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const initialState = { email: "", password: "" };
@@ -69,7 +70,7 @@ export default function Login() {
           <br />
           <br />
           <span>Don't have any accoount? </span>
-          <a href="./signup">Sign Up</a>
+          <Link to="/signup">Sign Up</Link>
         </div>
       </form>
     </div>

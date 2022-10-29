@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchOrders } from "../../actions/orderactions";
 import Order from "../../components/Orders/Order";
+import { Link } from "react-router-dom";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ export default function Orders() {
           </div>
         </div>
       </div>
+      <h5 className="fw-bold mt-2">
+        <Link to="/home">
+          <i className="fas fa-angle-left me-2"></i>Back to home
+        </Link>
+      </h5>
     </section>
   );
 }

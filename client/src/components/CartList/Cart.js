@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Cart({ cart, handleInc, handleDesc, handleDelete }) {
   return (
@@ -47,14 +48,14 @@ export default function Cart({ cart, handleInc, handleDesc, handleDelete }) {
             <h5 className="mb-0">{cart.price}</h5>
           </div>
           <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-            <a
+            <Link
               className="text-danger delete"
               onClick={() => {
                 handleDelete(cart._id);
               }}
             >
               <i className="fas fa-trash fa-lg"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Rating } from "react-simple-star-rating";
+import { Link } from "react-router-dom";
 
 export default function Product({
   product,
@@ -25,10 +26,10 @@ export default function Product({
           <div className="col-md-7 col-sm-12 col-xs-12">
             <div className={productsStyles["product-deatil"]}>
               <h5 className={productsStyles["name"]}>
-                <a href={`/product/${product._id}`}>{product.name}</a>
-                <a href="#">
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+                <Link to="#">
                   <span>Medical</span>
-                </a>
+                </Link>
               </h5>
               <p className={productsStyles["price-container"]}>
                 <span>{product.price}</span>
@@ -61,12 +62,12 @@ export default function Product({
                     Add to cart
                   </button>
 
-                  <a
-                    href={`/product/${product._id}`}
+                  <Link
+                    to={`/product/${product._id}`}
                     className="btn btn-info active"
                   >
                     More info
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-md-12">
                   <div className={productsStyles["rating"]}>

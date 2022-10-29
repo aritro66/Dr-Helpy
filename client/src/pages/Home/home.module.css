@@ -171,6 +171,10 @@ section {
   font-size: 1.7rem;
 }
 
+.header .header-2 .navbar a.active {
+  background: var(--dark-color);
+}
+
 .header .header-2 .navbar a:hover {
   background: var(--dark-color);
 }

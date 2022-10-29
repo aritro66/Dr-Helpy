@@ -10,6 +10,7 @@ import {
 } from "../../constants/home";
 import homeStyles from "./home.module.css";
 import CarouselSlider from "react-carousel-slider";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -27,9 +28,9 @@ export default function Home() {
           <div className={homeStyles["content"]}>
             <h3>Buy Medicines from here</h3>
             <p>Get best quality medicines from us at reasonable prices.</p>
-            <a href="/products" className={homeStyles["btn"]}>
+            <Link to="/product" className={homeStyles["btn"]}>
               Buy now
-            </a>
+            </Link>
           </div>
 
           <div
@@ -80,9 +81,9 @@ export default function Home() {
             <div className={homeStyles["icons"]}>
               <i className={`fas ${ele.class}`}></i>
               <div className={homeStyles["content"]}>
-                <a href="#">
+                <Link to="#">
                   <h3>{ele.h3}</h3>
-                </a>
+                </Link>
                 <p>{ele.p}</p>
               </div>
             </div>
@@ -102,10 +103,10 @@ export default function Home() {
             return (
               <div className={homeStyles["box"]}>
                 <div className={homeStyles["image"]}>
-                  <a href="/doctor">
+                  <Link to="/doctor">
                     {" "}
                     <img src={ele.src} />{" "}
-                  </a>
+                  </Link>
                 </div>
                 <div className={homeStyles["text"]}>{ele.text}</div>
               </div>
@@ -120,9 +121,9 @@ export default function Home() {
           <p>
             You are in safe hands, choose the experts and get consulation online
           </p>
-          <a href="/doctor" className={homeStyles["btn"]}>
+          <Link to="/doctor" className={homeStyles["btn"]}>
             Get Now
-          </a>
+          </Link>
         </div>
 
         <div className="image">

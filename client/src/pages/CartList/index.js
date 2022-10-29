@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletecart, inc, desc } from "../../actions/cartactions";
 import { payment } from "../../api";
 import Cart from "../../components/CartList/Cart";
+import { Link } from "react-router-dom";
 
 export default function CartList() {
   const dispatch = useDispatch();
@@ -67,9 +68,9 @@ export default function CartList() {
                   Proceed to Pay
                 </button>
                 <h5 className="fw-bold mt-2">
-                  <a href="/home">
+                  <Link to="/home">
                     <i className="fas fa-angle-left me-2"></i>Back to home
-                  </a>
+                  </Link>
                 </h5>
               </div>
             </div>

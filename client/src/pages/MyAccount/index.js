@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import myaccountStyles from "./myaccount.module.css";
+import { Link } from "react-router-dom";
 
 export default function MyAccount() {
   const data = useSelector((state) => state.authReducer);
@@ -43,7 +44,7 @@ export default function MyAccount() {
                         >
                           <label
                             className={myaccountStyles["form-control-label"]}
-                            for="input-username"
+                            forHtml="input-username"
                           >
                             Username
                           </label>
@@ -60,7 +61,7 @@ export default function MyAccount() {
                         <div className={myaccountStyles["form-group"]}>
                           <label
                             className={myaccountStyles["form-control-label"]}
-                            for="input-email"
+                            forHtml="input-email"
                           >
                             Email address
                           </label>
@@ -68,6 +69,7 @@ export default function MyAccount() {
                             type="email"
                             id={myaccountStyles["input-email"]}
                             className={`${myaccountStyles["form-control"]} ${myaccountStyles["form-control-alternative"]}`}
+                            style={{ textTransform: "none" }}
                             value={data.email}
                             placeholder="jesse@example.com"
                           />
@@ -81,7 +83,7 @@ export default function MyAccount() {
                         >
                           <label
                             className={myaccountStyles["form-control-label"]}
-                            for="input-first-name"
+                            forHtml="input-first-name"
                           >
                             First name
                           </label>
@@ -100,7 +102,7 @@ export default function MyAccount() {
                         >
                           <label
                             className={myaccountStyles["form-control-label"]}
-                            for="input-last-name"
+                            forHtml="input-last-name"
                           >
                             Last name
                           </label>
@@ -121,7 +123,7 @@ export default function MyAccount() {
                         >
                           <label
                             className={myaccountStyles["form-control-label"]}
-                            for="input-first-name"
+                            forHtml="input-first-name"
                           >
                             Phone no
                           </label>
@@ -139,6 +141,11 @@ export default function MyAccount() {
                   <hr className="my-4" />
                 </div>
               </div>
+              <h5 className="fw-bold mt-2">
+                <Link to="/home">
+                  <i className="fas fa-angle-left me-2"></i>Back to home
+                </Link>
+              </h5>
             </div>
           </div>
         </div>

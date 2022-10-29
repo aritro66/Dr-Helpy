@@ -3,11 +3,15 @@ import Member from "../../components/About/Member";
 import Service from "../../components/About/Service";
 import { servicesList, teamMemberList, iconsList } from "../../constants/about";
 import aboutStyles from "./about.module.css";
+import Styles from "../Home/home.module.css";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Icon from "../../components/About/Icon";
 
 export default function About() {
   return (
     <>
+      <Navbar styles={Styles} />
       <section className={aboutStyles["about"]} id={aboutStyles["about"]}>
         <h1 className={aboutStyles["heading"]}>
           {" "}
@@ -96,6 +100,7 @@ export default function About() {
           </p>
         </div>
       </section>
+      <Footer styles={Styles} />
     </>
   );
 }
