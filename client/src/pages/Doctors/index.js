@@ -1,6 +1,7 @@
 import React from "react";
 import doctorStyle from "./doctor.module.css";
-import { doctordata } from "./doctorList";
+import { doctordata } from "../../constants/doctors";
+import Doctor from "../../components/Doctors/Doctor";
 
 export default function Doctors() {
   return (
@@ -23,35 +24,7 @@ export default function Doctors() {
       </div>
       <div className={doctorStyle["abc"]}>
         {doctordata.map((doctor) => {
-          return (
-            <div className={doctorStyle["card"]}>
-              <div className={doctorStyle["card-image"]}>
-                <img src={doctor.img} alt="Profile image" />
-              </div>
-              <p className={doctorStyle["name"]}>{doctor.name}</p>
-              <p>{doctor.type}</p>
-              <p>
-                {" "}
-                Ph.No: {doctor.phno}
-                <br />
-                Email: {doctor.email}
-                <br />
-                {doctor.hospital}
-                <br />
-              </p>
-              <div className={doctorStyle["socials"]}>
-                <button className={doctorStyle["facebook"]}>
-                  <i className="fab fa-facebook"></i>
-                </button>
-                <button className={doctorStyle["instagram"]}>
-                  <i className="fab fa-instagram"></i>
-                </button>
-                <button className={doctorStyle["twitter"]}>
-                  <i className="fab fa-twitter"></i>
-                </button>
-              </div>
-            </div>
-          );
+          return <Doctor doctor={doctor} doctorStyle={doctorStyle} />;
         })}
       </div>
     </div>

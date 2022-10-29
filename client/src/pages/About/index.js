@@ -1,25 +1,28 @@
 import React from "react";
+import Member from "../../components/About/Member";
+import Service from "../../components/About/Service";
 import { servicesList, teamMemberList, iconsList } from "../../constants/about";
 import aboutStyles from "./about.module.css";
+import Icon from "../../components/About/Icon";
 
 export default function About() {
   return (
     <>
-      <section className={aboutStyles.about} id={aboutStyles.about}>
-        <h1 className={aboutStyles.heading}>
+      <section className={aboutStyles["about"]} id={aboutStyles["about"]}>
+        <h1 className={aboutStyles["heading"]}>
           {" "}
           <span>about</span> Dr. Helpy
         </h1>
 
-        <div className={aboutStyles.row}>
-          <div className={aboutStyles.image}>
+        <div className={aboutStyles["row"]}>
+          <div className={aboutStyles["image"]}>
             <img
               src="images/medicine-concept-illustration_114360-2802.jpg"
               alt=""
             />
           </div>
 
-          <div className={aboutStyles.content}>
+          <div className={aboutStyles["content"]}>
             <h3>we take care of your healthy life</h3>
             <h4>We are - India's most convenient online pharmacy</h4>
             <p>
@@ -40,64 +43,50 @@ export default function About() {
             </p>
           </div>
 
-          <section className={aboutStyles.services} id={aboutStyles.services}>
-            <h1 className={aboutStyles.heading}>
+          <section
+            className={aboutStyles["services"]}
+            id={aboutStyles["services"]}
+          >
+            <h1 className={aboutStyles["heading"]}>
               {" "}
               WHAT <span>WE DO</span>{" "}
             </h1>
 
             <div className={aboutStyles["box-container"]}>
               {servicesList.map((ele) => {
-                return (
-                  <div className={aboutStyles.box}>
-                    <i className={`fas ${ele.class}`}></i>
-                    <h3>{ele.h3}</h3>
-                    <p>{ele.p}</p>
-                  </div>
-                );
+                return <Service service={ele} aboutStyles={aboutStyles} />;
               })}
             </div>
           </section>
 
-          <section className={aboutStyles.team} id={aboutStyles.team}>
-            <h1 className={aboutStyles.heading}>
+          <section className={aboutStyles["team"]} id={aboutStyles["team"]}>
+            <h1 className={aboutStyles["heading"]}>
               {" "}
               our <span>team</span>{" "}
             </h1>
 
             <div className={aboutStyles["box-container"]}>
               {teamMemberList.map((ele) => {
-                return (
-                  <div className={aboutStyles.box}>
-                    <h3>{ele.h3}</h3>
-                    <p>{ele.p}</p>
-                  </div>
-                );
+                return <Member member={ele} aboutStyles={aboutStyles} />;
               })}
             </div>
           </section>
 
           <section className={aboutStyles["icons-container"]}>
             {iconsList.map((ele) => {
-              return (
-                <div className={aboutStyles.icons}>
-                  <i className={`fas ${ele.class}`}></i>
-                  <h3>{ele.h3}</h3>
-                  <p>{ele.p}</p>
-                </div>
-              );
+              return <Icon member={ele} aboutStyles={aboutStyles} />;
             })}
           </section>
         </div>
       </section>
 
-      <section className={aboutStyles.home} id={aboutStyles.home}>
-        <div className={aboutStyles.image}>
+      <section className={aboutStyles["home"]} id={aboutStyles["home"]}>
+        <div className={aboutStyles["image"]}>
           <img src="images/contactus2.jpg" />
         </div>
 
-        <div className={aboutStyles.content}>
-          <h1 className={aboutStyles.heading1}>
+        <div className={aboutStyles["content"]}>
+          <h1 className={aboutStyles["heading1"]}>
             {" "}
             stay safe <span>stay healthy</span>{" "}
           </h1>

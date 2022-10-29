@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchOrders } from "../../actions/orderactions";
+import Order from "../../components/Orders/Order";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -27,62 +28,7 @@ export default function Orders() {
             ) : (
               <>
                 {orderdata.map((ele, index) => {
-                  return (
-                    <>
-                      <div
-                        className="mb-4 p-4 mt-2"
-                        style={{ backgroundColor: "white" }}
-                      >
-                        <h3>Order {index + 1}</h3>
-                        <h5>
-                          Date{" "}
-                          {`${new Date(ele.createdAt).getDate()}/${
-                            new Date(ele.createdAt).getMonth() + 1
-                          }/${new Date(ele.createdAt).getFullYear()}`}
-                          Time{" "}
-                          {`${new Date(ele.createdAt).getHours()}:${
-                            new Date(ele.createdAt).getMinutes() + 1
-                          }:${new Date(ele.createdAt).getSeconds()}`}
-                        </h5>
-                        {JSON.parse(ele.order).map((dataele) => {
-                          return (
-                            <div className="card rounded-3">
-                              <div className="card-body p-4">
-                                <div className="row d-flex justify-content-between align-items-center">
-                                  <div className="col-md-2 col-lg-2 col-xl-2">
-                                    <img
-                                      src={`/${dataele.img}`}
-                                      className="img-fluid rounded-3"
-                                      alt="Cotton T-shirt"
-                                    />
-                                  </div>
-                                  <div className="col-md-3 col-lg-3 col-xl-3">
-                                    <p className="lead fw-normal mb-2">
-                                      {dataele.name}
-                                    </p>
-                                  </div>
-                                  <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                    <input
-                                      id="form1"
-                                      disabled
-                                      min="0"
-                                      name="quantity"
-                                      value={`${dataele.quantity}`}
-                                      type="number"
-                                      className="form-control form-control-sm"
-                                    />
-                                  </div>
-                                  <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 className="mb-0">{dataele.price}</h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </>
-                  );
+                  return <Order order={ele} index={index} />;
                 })}
               </>
             )}

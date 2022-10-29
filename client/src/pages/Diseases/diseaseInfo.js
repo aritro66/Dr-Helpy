@@ -16,10 +16,10 @@ export default function DiseaseInfo() {
   return (
     <>
       <div
-        id={diseaseStyles.cont}
+        id={diseaseStyles["cont"]}
         style={{ padding: "20px 30px", lineHeight: "200%" }}
       >
-        <p className={diseaseStyles.main}>
+        <p className={diseaseStyles["main"]}>
           <strong>{data?.length && data[0].name}</strong>
         </p>
 
@@ -43,7 +43,7 @@ export default function DiseaseInfo() {
             })}
         </ol>
 
-        <hr className={diseaseStyles.design} />
+        <hr className={diseaseStyles["design"]} />
       </div>
     </>
   );

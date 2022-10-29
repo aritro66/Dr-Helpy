@@ -22,17 +22,19 @@ export default function Home() {
   return (
     <>
       <Navbar styles={homeStyles} />
-      <section className={homeStyles.home} id={homeStyles.home}>
-        <div className={homeStyles.row}>
-          <div className={homeStyles.content}>
+      <section className={homeStyles["home"]} id={homeStyles["home"]}>
+        <div className={homeStyles["row"]}>
+          <div className={homeStyles["content"]}>
             <h3>Buy Medicines from here</h3>
             <p>Get best quality medicines from us at reasonable prices.</p>
-            <a href="/products" className={homeStyles.btn}>
+            <a href="/products" className={homeStyles["btn"]}>
               Buy now
             </a>
           </div>
 
-          <div className={`${homeStyles.swiper} ${homeStyles["image-slider"]}`}>
+          <div
+            className={`${homeStyles["swiper"]} ${homeStyles["image-slider"]}`}
+          >
             <div className={`${homeStyles["swiper-wrapper"]}`}>
               <CarouselSlider
                 slideItems={homeSectionImageList}
@@ -64,16 +66,20 @@ export default function Home() {
                 }}
               />
             </div>
-            <img src="images/stand.png" className={homeStyles.stand} alt="" />
+            <img
+              src="images/stand.png"
+              className={homeStyles["stand"]}
+              alt=""
+            />
           </div>
         </div>
       </section>
       <section className={homeStyles["icons-container"]}>
         {iconSectionList.map((ele) => {
           return (
-            <div className={homeStyles.icons}>
+            <div className={homeStyles["icons"]}>
               <i className={`fas ${ele.class}`}></i>
-              <div className={homeStyles.content}>
+              <div className={homeStyles["content"]}>
                 <a href="#">
                   <h3>{ele.h3}</h3>
                 </a>
@@ -83,8 +89,8 @@ export default function Home() {
           );
         })}
       </section>
-      <section id={homeStyles.consultation}>
-        <h1 className={homeStyles.heading1}>
+      <section id={homeStyles["consultation"]}>
+        <h1 className={homeStyles["heading1"]}>
           <span> Consult top doctors online for any health concern </span>
         </h1>
         <p>
@@ -94,27 +100,27 @@ export default function Home() {
         <div className={homeStyles["consult-container"]}>
           {consultations.map((ele) => {
             return (
-              <div className={homeStyles.box}>
-                <div className={homeStyles.image}>
+              <div className={homeStyles["box"]}>
+                <div className={homeStyles["image"]}>
                   <a href="/doctor">
                     {" "}
                     <img src={ele.src} />{" "}
                   </a>
                 </div>
-                <div className={homeStyles.text}>{ele.text}</div>
+                <div className={homeStyles["text"]}>{ele.text}</div>
               </div>
             );
           })}
         </div>
       </section>
-      <section className={homeStyles.deal}>
-        <div className={homeStyles.content}>
+      <section className={homeStyles["deal"]}>
+        <div className={homeStyles["content"]}>
           <h3>deal of the day</h3>
           <h1>Get a Appointment With World Best Doctor</h1>
           <p>
             You are in safe hands, choose the experts and get consulation online
           </p>
-          <a href="/doctor" className={homeStyles.btn}>
+          <a href="/doctor" className={homeStyles["btn"]}>
             Get Now
           </a>
         </div>

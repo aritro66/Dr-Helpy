@@ -2,10 +2,10 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Products from "./pages/Product";
-import Disease from "./pages/Disease";
-import DiseaseInfo from "./pages/Disease/diseaseInfo";
-import ProductInfo from "./pages/Product/productInfo";
+import Products from "./pages/Products";
+import Diseases from "./pages/Diseases";
+import DiseaseInfo from "./pages/Diseases/diseaseInfo";
+import ProductInfo from "./pages/Products/productInfo";
 import Landing from "./pages/Landing";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -51,7 +51,7 @@ function App() {
         />
         <Route
           path="/disease"
-          element={loginin ? <Disease /> : <Navigate to="/" />}
+          element={loginin ? <Diseases /> : <Navigate to="/" />}
         />
         <Route
           path="/disease/:id"

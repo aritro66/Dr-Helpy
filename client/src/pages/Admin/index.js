@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserList, UnBlockUser, BlockUser } from "../../actions/usersactions";
+import User from "../../components/Admin/User";
 
 export default function Admin() {
   const dispatch = useDispatch();
@@ -27,12 +28,12 @@ export default function Admin() {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-10">
               <div>
-                <h3 className="fw-normal mb-0 text-black">Admin</h3>
+                <h3 className="display-5 mb-4 text-black">Admin</h3>
               </div>
               {!data ? (
                 <p>No users registered</p>
               ) : (
-                <table className="table table-striped">
+                <table className="table table-striped display-6">
                   <thead>
                     <tr>
                       <th scope="col">Sno.</th>
@@ -44,30 +45,12 @@ export default function Admin() {
                   <tbody>
                     {data.map((ele, index) => {
                       return (
-                        <tr>
-                          <th scope="row">{index + 1}</th>
-                          <td>{ele.fname + " " + ele.lname}</td>
-                          <td style={{ textTransform: "none" }}>{ele.email}</td>
-                          <td>
-                            {ele.allow ? (
-                              <button
-                                className="block"
-                                style={{ color: "red" }}
-                                onClick={() => handleBlock(ele.id)}
-                              >
-                                <i className="fa-solid fa-ban"></i>
-                              </button>
-                            ) : (
-                              <button
-                                className="unblock"
-                                style={{ color: "green" }}
-                                onClick={() => handleUnBlock(ele.id)}
-                              >
-                                <i className="fa-solid fa-check"></i>
-                              </button>
-                            )}
-                          </td>
-                        </tr>
+                        <User
+                          index={index}
+                          user={ele}
+                          handleBlock={handleBlock}
+                          handleUnBlock={handleUnBlock}
+                        />
                       );
                     })}
                   </tbody>
