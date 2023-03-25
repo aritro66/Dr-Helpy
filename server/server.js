@@ -8,9 +8,10 @@ const diseaseroutes = require("./routes/diseaseroute");
 const adminroutes = require("./routes/adminroute");
 const paymentroutes = require("./routes/paymentroute");
 const orderroutes = require("./routes/orderroute");
-
+const morgan = require("morgan");
 const cors = require("cors");
 app.use(cors());
+app.use(morgan("dev"));
 const PORT = process.env.PORT || 4001;
 // url to connect mongodb
 const link = `mongodb+srv://${process.env.PASSWORD}:mongodb2002@cluster0.8et7m.mongodb.net/${process.env.DATABASENAME}`;

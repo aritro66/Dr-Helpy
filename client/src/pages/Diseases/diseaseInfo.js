@@ -26,7 +26,9 @@ export default function DiseaseInfo() {
           <strong>{data?.length && data[0].name}</strong>
         </p>
 
-        {data?.length && <img src={`/${data[0].image}`} />}
+        {data?.length && (
+          <img className={diseaseStyles["img"]} src={`/${data[0].image}`} />
+        )}
         <p>
           <strong>Symptoms</strong>
         </p>

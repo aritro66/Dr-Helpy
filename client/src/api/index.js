@@ -33,7 +33,7 @@ API.interceptors.request.use(async (req) => {
       newData.accessToken = data.accessToken;
       newData.refreshToken = data.refreshToken;
       localStorage.setItem("profile", JSON.stringify({ ...newData }));
-    }
+    } else return req;
   }
   return req;
 });
