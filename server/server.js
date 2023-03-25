@@ -22,7 +22,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-app.use(express.urlencoded({ extended: false })); // parsing form data
+app.use(express.urlencoded({ extended: true })); // parsing form data
 app.use(express.json()); // parsing json data
 
 app.use(authroutes);

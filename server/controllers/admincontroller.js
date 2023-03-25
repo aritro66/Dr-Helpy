@@ -1,5 +1,8 @@
 const jwt = require("jsonwebtoken");
 const creater = require("../models/users");
+const productlistscreater = require("../models/productlists");
+const fs = require("fs");
+const path = require("path");
 
 const admin = async (req, res) => {
   const data = await creater.find({ admin: { $ne: true } }); // finding user by email
@@ -37,4 +40,50 @@ const unblock = async (req, res, next) => {
   res.json({ msg: "success" });
 };
 
-module.exports = { admin, block, unblock };
+const imgBufferToBase64 = async (filepath) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path.join(__dirname, "../", filepath), function (err, data) {
+      if (err) reject(err);
+      else resolve(data.toString("base64"));
+    });
+  });
+};
+
+const addproduct = async (req, res) => {
+  try {
+    console.log(req.file);
+    console.log(req.body);
+    const { name, price, desc, rating } = req.body;
+    const imgbase64 = await imgBufferToBase64(req.file.path);
+
+    const data = await productlistscreater.insertMany([
+      {
+        name: name,
+        price: price,
+        desc: desc,
+        rating: rating,
+        img: imgbase64,
+        mimetype: req.file.mimetype,
+      },
+    ]);
+    // console.log(data);
+    res.json({ data: data[0]._id, success: "worked" });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
+const productDeleteById = async (req, res) => {
+  try {
+    console.log(req.body);
+    const chk = await productlistscreater.findByIdAndDelete(req.body.id);
+    console.log(chk);
+    res.json("success");
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("couldn't delete");
+  }
+};
+
+module.exports = { admin, block, unblock, addproduct, productDeleteById };

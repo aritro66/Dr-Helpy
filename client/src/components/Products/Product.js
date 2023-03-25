@@ -17,7 +17,7 @@ export default function Product({
           <div className="col-md-5 col-sm-12 col-xs-12">
             <div className={productsStyles["product-image"]}>
               <img
-                src={product.img}
+                src={`data:image/${product.mimetype};base64, ${product.img}`}
                 className="img-responsive img-fluid "
                 style={{ maxHeight: "250px", minHeight: "250px" }}
               />
@@ -27,12 +27,12 @@ export default function Product({
             <div className={productsStyles["product-deatil"]}>
               <h5 className={productsStyles["name"]}>
                 <Link to={`/product/${product._id}`}>{product.name}</Link>
-                <Link to="#">
+                <Link to="#" style={{ textDecoration: "none" }}>
                   <span>Medical</span>
                 </Link>
               </h5>
               <p className={productsStyles["price-container"]}>
-                <span>{product.price}</span>
+                <span>₹{product.price}</span>
               </p>
               <span className={productsStyles["tag1"]}></span>
             </div>

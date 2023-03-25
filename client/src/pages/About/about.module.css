@@ -37,7 +37,7 @@ section:nth-child(even) {
 
 .heading {
   text-align: center;
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
   text-transform: uppercase;
   color: var(--black);
   font-size: 5rem;
@@ -52,7 +52,7 @@ section:nth-child(even) {
 }
 
 .heading1 {
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
   text-transform: uppercase;
   color: var(--black);
   font-size: 4.5rem;
@@ -89,7 +89,7 @@ section:nth-child(even) {
   font-size: 4.5rem;
   color: var(--black);
   line-height: 1.9;
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
 }
 
 .home .content p {
@@ -130,7 +130,7 @@ section:nth-child(even) {
   font-size: 4.5rem;
   color: var(--black);
   padding: 0.5rem 0;
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
 }
 
 .icons-container .icons p {
@@ -198,14 +198,14 @@ section:nth-child(even) {
 
 .about .row .content h3 {
   color: var(--black);
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
   font-size: 4rem;
   line-height: 1.9;
 }
 
 .about .row .content h4 {
   color: var(--green);
-  text-shadow: var(--text-shadow);
+  /* text-shadow: var(--text-shadow); */
   font-size: 2.7rem;
   line-height: 1.9;
 }

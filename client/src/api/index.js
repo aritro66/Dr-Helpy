@@ -53,3 +53,11 @@ export const payment = (order) => API.post("/checkout", { cart: order });
 export const confirm = (order, email) =>
   API.post("/confirm", { cart: order, email: email });
 export const orders = (email) => API.post("/orders", { email: email });
+export const addproduct = (formData) =>
+  API.post("/addproduct", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+export const deleteproduct = (id) =>
+  API.delete("/deleteproduct", { data: { id: id } });

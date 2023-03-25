@@ -15,7 +15,7 @@ export default function Doctors() {
         <br />
         <div className={doctorStyle["text"]}>
           <p>
-            A Consultation with a trusted doctor for your every medical neeA
+            A Consultation with a trusted doctor for your every medical needs
             Consultation with a trusted doctor for your every medical need
             Consult trusted & experienced General Physicians. We hand pick
             doctors for you to consult online for your specific requirments. Our

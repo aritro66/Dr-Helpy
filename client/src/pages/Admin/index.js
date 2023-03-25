@@ -1,62 +1,76 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UserList, UnBlockUser, BlockUser } from "../../actions/usersactions";
+import { UserList, UnBlockUser, BlockUser } from "../../actions/adminactions";
 import User from "../../components/Admin/User";
+import { Link, NavLink } from "react-router-dom";
+import adminStyle from "./admin.module.css";
+import { useNavigate, Outlet } from "react-router-dom";
+import { logout } from "../../actions/authactions";
 
 export default function Admin() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.adminreducer?.data);
-  useEffect(() => {
-    dispatch(UserList());
-  }, []);
+  const navigate = useNavigate();
 
-  const handleBlock = (id) => {
-    dispatch(BlockUser(id));
+  const handleClick = () => {
+    dispatch(logout(navigate));
   };
-
-  const handleUnBlock = (id) => {
-    dispatch(UnBlockUser(id));
-  };
-  console.log(data);
   return (
     <>
       <section
-        className="h-100"
-        style={{ backgroundColor: "#eee", minHeight: "100vh" }}
+        className="h-100 d-flex flex-row p-0 m-0"
+        style={{ minHeight: "100vh" }}
       >
-        <div className="container h-100 py-5">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-10">
-              <div>
-                <h3 className="display-5 mb-4 text-black">Admin</h3>
+        <div className={`h-100 ${adminStyle.dashboard_options}`}>
+          <Link
+            to="/"
+            style={{
+              fontWeight: "bolder",
+              fontSize: "2.5rem",
+              color: "#444",
+              textDecoration: "none",
+              display: "block",
+            }}
+          >
+            <i className="fa fa-heartbeat" style={{ color: "red" }}></i> Dr.
+            Helpy
+          </Link>
+          <NavLink to="/admin" className={adminStyle.option_link}>
+            <i className="fas fa-th-large"></i>
+            Dashboard
+          </NavLink>
+          <NavLink to="/admin/users" className={adminStyle.option_link}>
+            <i className="fa-solid fa-user"></i>
+            Users
+          </NavLink>
+          <NavLink to="/admin/product" className={adminStyle.option_link}>
+            <i className="fa fa-cube"></i>
+            Products
+          </NavLink>
+        </div>
+        <div
+          className="h-100"
+          style={{ width: "calc(100% - 230px)", minHeight: "100vh" }}
+        >
+          <div className={adminStyle.header}>
+            <div>Dashboard</div>
+            <div className={adminStyle.dropdown} style={{ display: "inline" }}>
+              <Link
+                to="#"
+                className="bi bi-person-circle"
+                id={adminStyle.toggleclick}
+              ></Link>
+              <div className={adminStyle["dropdown-content"]}>
+                <Link to="/myaccount">My Acount</Link>
+                <Link to="" onClick={handleClick}>
+                  Logout
+                </Link>
+                <Link to="/orders">My Orders</Link>
               </div>
-              {!data ? (
-                <p>No users registered</p>
-              ) : (
-                <table className="table table-striped display-6">
-                  <thead>
-                    <tr>
-                      <th scope="col">Sno.</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">email</th>
-                      <th scope="col">Block/Unblock</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((ele, index) => {
-                      return (
-                        <User
-                          index={index}
-                          user={ele}
-                          handleBlock={handleBlock}
-                          handleUnBlock={handleUnBlock}
-                        />
-                      );
-                    })}
-                  </tbody>
-                </table>
-              )}
             </div>
+          </div>
+          <div className={adminStyle.body}>
+            {" "}
+            <Outlet />{" "}
           </div>
         </div>
       </section>

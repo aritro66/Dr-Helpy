@@ -24,7 +24,7 @@ export default function ProductInfo() {
             <div className="col-lg-5 col-md-6 col-6">
               <img
                 className=""
-                src={`/${data[0].img}`}
+                src={`data:image/${data[0].mimetype};base64, ${data[0].img}`}
                 id={productsStyles.MainImg}
                 style={{ height: "100%", width: "200px" }}
                 alt=""
@@ -35,7 +35,7 @@ export default function ProductInfo() {
               <h3>{data[0].name}</h3>
 
               <div className={productsStyles.price}>
-                M.R.P. : <span>{data[0].price}</span>
+                M.R.P. : <span>₹{data[0].price}</span>
               </div>
             </div>
           </div>

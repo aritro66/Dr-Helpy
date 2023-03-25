@@ -40,7 +40,7 @@ export default function authReducer(state = initialState, action) {
       localStorage.removeItem("profile");
       return {
         ...state,
-        loginin: true,
+        loginin: false,
         fname: "",
         lname: "",
         phno: "",

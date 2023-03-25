@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 :root {
+  --mint: #3d8361;
   --green: #27ae60;
   --dark-color: #219150;
   --black: #444;
@@ -21,6 +22,9 @@
   /* text-transform: ; */
   transition: all 0.2s linear;
   transition: width none;
+}
+.content {
+  text-decoration: none;
 }
 
 html {
@@ -157,7 +161,7 @@ section {
 }
 
 .header .header-2 {
-  background: var(--green);
+  background: var(--mint);
 }
 
 .header .header-2 .navbar {
@@ -165,6 +169,7 @@ section {
 }
 
 .header .header-2 .navbar a {
+  text-decoration: none;
   color: #fff;
   display: inline-block;
   padding: 1.2rem;
@@ -309,7 +314,7 @@ section {
 } */
 
 .home {
-  background: url(https://wallpapercave.com/wp/wp2968489.jpg) no-repeat !important;
+  /* background: url(https://wallpapercave.com/wp/wp2968489.jpg) no-repeat !important; */
   background-size: cover !important;
   background-position: center !important;
 }
@@ -568,6 +573,7 @@ section {
 
 .deal .image img {
   width: 100%;
+  min-height: 400px;
   height: 100%;
 }
 

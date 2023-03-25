@@ -18,25 +18,29 @@ export default function Diseases() {
     <>
       <Navbar styles={Styles} />
       <div className={diseaseStyles["header"]}>
-        <h1>
+        <h1 style={{ textAlign: "center" }}>
           <strong>Diseases and their cure</strong>
         </h1>
       </div>
       <div style={{ padding: "15px 25px", lineHeight: "200%" }}>
-        <div style={{ textAlign: "right" }}></div> <br />
+        <div style={{ textAlign: "center" }}></div> <br />
         <div className={diseaseStyles["desc"]}>
           <p>Below is the list of common diseases and injuries sorted by A-Z</p>
         </div>
         <br />
         <div className={diseaseStyles["List"]}>
-          <ul>
-            {data &&
-              data.map((ele) => {
-                return <Disease disease={ele} />;
-              })}
-          </ul>
+          {Array.isArray(data) &&
+            data.map((ele) => {
+              return <Disease disease={ele} />;
+            })}
         </div>
       </div>
+      <div style={{ padding: "15px 25px" }}>
+        <div class="cart" className={diseaseStyles[""]}>
+          {/* <p>hekolxskjczbcsjab</p> */}
+        </div>
+      </div>
+
       <Footer styles={Styles} />
     </>
   );

@@ -55,7 +55,9 @@
   background-size: 100% 100%;
 }
 .List {
-  font-size: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2rem;
 }
 .desc {
   text-align: center;
@@ -68,4 +70,55 @@
   height: 250px;
   display: block;
   margin: auto;
+}
+/*hs*/
+.services {
+  width: 100%;
+}
+
+.services .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap: 2rem;
+}
+
+.services .box-container .cart {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  padding: 2.5rem;
+}
+
+.services .box-container .cart i {
+  color: var(--green);
+  font-size: 7rem;
+  padding-bottom: 0.5rem;
+}
+
+.services .box-container .cart h3 {
+  color: var(--black);
+  font-size: 5.5rem;
+  padding: 1rem 0;
+}
+
+.services .box-container .cart p {
+  color: var(--light-color);
+  font-size: 5.4rem;
+  line-height: 2;
+}
+
+.img {
+  display: block;
+  margin: auto;
+  height: 300px;
+  width: 300px;
+}
+
+@media screen and (max-width: 700px) {
+  .List {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto));
+    gap: 2rem;
+  }
 }

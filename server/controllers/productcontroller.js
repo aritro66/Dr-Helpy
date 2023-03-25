@@ -1,12 +1,13 @@
-const productcreater = require("../models/products");
+// const productcreater = require("../models/products");
+const productlistscreater = require("../models/productlists");
 
 const productList = async (req, res) => {
-  const productlist = await productcreater.find();
+  const productlist = await productlistscreater.find();
   res.json(productlist);
 };
 
 const productListById = async (req, res) => {
-  const productlist = await productcreater.find({ _id: req.params.id });
+  const productlist = await productlistscreater.find({ _id: req.params.id });
   res.json(productlist);
 };
 

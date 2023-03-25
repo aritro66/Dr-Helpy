@@ -81,7 +81,7 @@ export default function Home() {
             <div className={homeStyles["icons"]}>
               <i className={`fas ${ele.class}`}></i>
               <div className={homeStyles["content"]}>
-                <Link to="#">
+                <Link to="#" style={{ textDecoration: "none" }}>
                   <h3>{ele.h3}</h3>
                 </Link>
                 <p>{ele.p}</p>
