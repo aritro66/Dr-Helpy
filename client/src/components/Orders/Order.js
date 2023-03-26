@@ -22,7 +22,7 @@ export default function Order({ order, index }) {
                 <div className="row d-flex justify-content-between align-items-center">
                   <div className="col-md-2 col-lg-2 col-xl-2">
                     <img
-                      src={`/${dataele.img}`}
+                      src={`data:image/${dataele.mimetype};base64, ${dataele.img}`}
                       className="img-fluid rounded-3"
                       alt="Cotton T-shirt"
                     />
@@ -42,7 +42,9 @@ export default function Order({ order, index }) {
                     />
                   </div>
                   <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                    <h5 className="mb-0">{dataele.price}</h5>
+                    <h5 className="mb-0">
+                      ₹{dataele.price * dataele.quantity}
+                    </h5>
                   </div>
                 </div>
               </div>
