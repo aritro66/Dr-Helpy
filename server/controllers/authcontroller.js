@@ -146,9 +146,22 @@ const refresh = (req, res) => {
   //if everything is ok, create new access token, refresh token and send to user
 };
 
+const updateuser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await creater.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+
+    res.json(data);
+  } catch (error) {
+    res.status(400).json("Unable to update");
+  }
+};
 module.exports = {
   login,
   signup,
   logout,
   refresh,
+  updateuser,
 };

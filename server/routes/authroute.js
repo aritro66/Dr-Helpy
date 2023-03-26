@@ -5,6 +5,7 @@ const {
   signup,
   logout,
   refresh,
+  updateuser,
 } = require("../controllers/authcontroller");
 
 router.post("/login", login);
@@ -14,5 +15,7 @@ router.post("/signup", signup);
 router.post("/logout", logout);
 
 router.post("/refresh", refresh);
+
+router.put("/updateuser/:id", updateuser);
 
 module.exports = router;
