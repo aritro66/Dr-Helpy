@@ -34,15 +34,24 @@ export default function Admin() {
             <i className="fa fa-heartbeat" style={{ color: "red" }}></i> Dr.
             Helpy
           </Link>
-          <NavLink to="/admin" className={adminStyle.option_link}>
-            <i className="fas fa-th-large"></i>
-            Dashboard
-          </NavLink>
-          <NavLink to="/admin/users" className={adminStyle.option_link}>
+
+          <NavLink
+            to="/admin/users"
+            className={adminStyle.option_link}
+            style={({ isActive }) => {
+              return { color: isActive ? "#0a58ca" : "" };
+            }}
+          >
             <i className="fa-solid fa-user"></i>
             Users
           </NavLink>
-          <NavLink to="/admin/product" className={adminStyle.option_link}>
+          <NavLink
+            to="/admin/product"
+            className={adminStyle.option_link}
+            style={({ isActive }) => {
+              return { color: isActive ? "#0a58ca" : "" };
+            }}
+          >
             <i className="fa fa-cube"></i>
             Products
           </NavLink>
