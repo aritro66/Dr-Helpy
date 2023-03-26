@@ -40,7 +40,7 @@ API.interceptors.request.use(async (req) => {
 
 export const fetchProductLists = () => API.get(`/productlist`);
 export const fetchDiseaseLists = () => API.get("/disease");
-export const fetchUsers = () => API.get("/admin");
+export const fetchUsers = () => API.get("/users");
 export const block = (id) => API.post("/block", { id: id });
 export const unblock = (id) => API.post("/unblock", { id: id });
 export const fetchDiseaseListsById = (id) => API.get(`/disease/${id}`);
@@ -52,7 +52,7 @@ export const LogOut = (refreshToken) =>
 export const payment = (order) => API.post("/checkout", { cart: order });
 export const confirm = (order, email) =>
   API.post("/confirm", { cart: order, email: email });
-export const orders = (email) => API.post("/orders", { email: email });
+export const orders = (email) => API.get(`/orders?email=${email}`);
 export const addproduct = (formData) =>
   API.post("/addproduct", formData, {
     headers: {

@@ -4,7 +4,7 @@ const productlistscreater = require("../models/productlists");
 const fs = require("fs");
 const path = require("path");
 
-const admin = async (req, res) => {
+const users = async (req, res) => {
   const data = await creater.find({ admin: { $ne: true } }); // finding user by email
   const userinfo = [];
   data.forEach((ele) => {
@@ -66,7 +66,6 @@ const addproduct = async (req, res) => {
         mimetype: req.file.mimetype,
       },
     ]);
-    // console.log(data);
     res.json(data[0]);
   } catch (error) {
     console.log(error);
@@ -86,4 +85,4 @@ const productDeleteById = async (req, res) => {
   }
 };
 
-module.exports = { admin, block, unblock, addproduct, productDeleteById };
+module.exports = { users, block, unblock, addproduct, productDeleteById };

@@ -16,7 +16,7 @@ const generateAccessToken = (user) => {
     },
     process.env.JWTKEY,
     {
-      expiresIn: "15s",
+      expiresIn: "10h",
     }
   );
 };

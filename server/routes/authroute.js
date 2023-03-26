@@ -7,6 +7,7 @@ const {
   refresh,
   updateuser,
 } = require("../controllers/authcontroller");
+const { verify } = require("../middlewares/auth");
 
 router.post("/login", login);
 
@@ -16,6 +17,6 @@ router.post("/logout", logout);
 
 router.post("/refresh", refresh);
 
-router.put("/updateuser", updateuser);
+router.put("/updateuser", verify, updateuser);
 
 module.exports = router;

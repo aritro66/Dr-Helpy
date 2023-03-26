@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
-  admin,
+  users,
   block,
   unblock,
   addproduct,
@@ -10,7 +10,7 @@ const {
 const { verify } = require("../middlewares/auth");
 const { uploadimage } = require("../middlewares/fileupload");
 
-router.get("/admin", verify, admin);
+router.get("/users", verify, users);
 
 router.post("/block", verify, block);
 

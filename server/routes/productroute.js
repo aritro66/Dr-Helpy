@@ -12,8 +12,8 @@ router.get("/", verify, productList);
 
 router.get("/:id", verify, productListById);
 
-router.get("/review/:id", reviewList);
+router.get("/review/:id", verify, reviewList);
 
-router.post("/addreview", addReview);
+router.post("/addreview", verify, addReview);
 
 module.exports = router;

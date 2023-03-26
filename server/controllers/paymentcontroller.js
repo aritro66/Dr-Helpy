@@ -48,7 +48,6 @@ const confirmorder = async (req, res) => {
     { order: JSON.stringify(req.body.cart), email: req.body.email },
   ]);
   console.log(data);
-  // res.cookie('cart', JSON.stringify([]));
 
   res.json("success");
 };
