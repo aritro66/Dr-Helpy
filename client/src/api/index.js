@@ -64,3 +64,6 @@ export const deleteproduct = (id) =>
 
 export const UpdateUser = (id, formData) =>
   API.put(`/updateuser?email=${id}`, formData);
+
+export const fetchReview = (id) => API.get(`productlist/review/${id}`);
+export const addReview = (data) => API.post("productlist/addreview", data);

@@ -191,7 +191,12 @@ section {
   right: 0;
   z-index: 1000;
 }
-
+.usericon {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
 .bottom-navbar {
   text-align: center;
   background: var(--dark-color);
