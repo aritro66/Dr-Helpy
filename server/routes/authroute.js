@@ -16,6 +16,6 @@ router.post("/logout", logout);
 
 router.post("/refresh", refresh);
 
-router.put("/updateuser/:id", updateuser);
+router.put("/updateuser", updateuser);
 
 module.exports = router;

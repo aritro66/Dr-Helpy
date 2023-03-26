@@ -159,6 +159,11 @@
   margin: 0;
 }
 
+#edit {
+  display: flex;
+  justify-content: space-between;
+}
+
 #myaccount button,
 #myaccount input {
   overflow: visible;
@@ -322,6 +327,7 @@
 
 .col-4,
 .col-8,
+.col-12,
 .col-md-12,
 .col-lg-4,
 .col-lg-6,
@@ -342,6 +348,10 @@
 .col-8 {
   max-width: 66.66667%;
   flex: 0 0 66.66667%;
+}
+.col-12 {
+  max-width: 100%;
+  flex: 0 0 100%;
 }
 
 @media (min-width: 768px) {

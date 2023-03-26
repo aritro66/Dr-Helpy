@@ -148,11 +148,10 @@ const refresh = (req, res) => {
 
 const updateuser = async (req, res) => {
   try {
-    const id = req.params.id;
-    const data = await creater.findOneAndUpdate({ _id: id }, req.body, {
+    const email = req.query.email;
+    const data = await creater.findOneAndUpdate({ email: email }, req.body, {
       new: true,
     });
-
     res.json(data);
   } catch (error) {
     res.status(400).json("Unable to update");

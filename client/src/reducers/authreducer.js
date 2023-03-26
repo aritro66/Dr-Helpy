@@ -1,4 +1,10 @@
-import { LOGIN, LOGOUT, SIGNUP, ERROR } from "../constants/actionTypes";
+import {
+  LOGIN,
+  LOGOUT,
+  SIGNUP,
+  ERROR,
+  UPDATE_USER,
+} from "../constants/actionTypes";
 const initialState = {
   loginin: false,
   errors: null,
@@ -47,6 +53,19 @@ export default function authReducer(state = initialState, action) {
         email: "",
         errors: null,
         admin: false,
+      };
+    case UPDATE_USER:
+      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+      return {
+        ...state,
+        id: action.payload.id,
+        loginin: true,
+        fname: action.payload.fname,
+        lname: action.payload.lname,
+        phno: action.payload.phno,
+        email: action.payload.email,
+        errors: null,
+        admin: action.payload.admin,
       };
     case ERROR:
       return { ...state, error: action.error };

@@ -17,3 +17,4 @@ export const DESC = "DESC";
 export const BLOCK = "BLOCK";
 export const UNBLOCK = "UNBLOCK";
 export const EMPTY_CART = "EMPTY_CART";
+export const UPDATE_USER = "UPDATE_USER";

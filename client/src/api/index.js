@@ -61,3 +61,6 @@ export const addproduct = (formData) =>
   });
 export const deleteproduct = (id) =>
   API.delete("/deleteproduct", { data: { id: id } });
+
+export const UpdateUser = (id, formData) =>
+  API.put(`/updateuser?email=${id}`, formData);

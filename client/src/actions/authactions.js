@@ -1,5 +1,11 @@
-import { LOGIN, LOGOUT, SIGNUP, ERROR } from "../constants/actionTypes";
-import { LogIn, LogOut, SignUp } from "../api/index";
+import {
+  LOGIN,
+  LOGOUT,
+  SIGNUP,
+  ERROR,
+  UPDATE_USER,
+} from "../constants/actionTypes";
+import { LogIn, LogOut, SignUp, UpdateUser } from "../api/index";
 
 export const login = (formData, router) => async (dispatch) => {
   try {
@@ -34,6 +40,17 @@ export const logout = (router) => async (dispatch) => {
     dispatch({ type: LOGOUT, payload: data });
 
     router("/login");
+  } catch (error) {
+    dispatch({ type: ERROR, error });
+    console.log(error);
+  }
+};
+
+export const updateuser = (email, formData) => async (dispatch) => {
+  try {
+    const { data } = await UpdateUser(email, formData);
+
+    dispatch({ type: UPDATE_USER, payload: data });
   } catch (error) {
     dispatch({ type: ERROR, error });
     console.log(error);
