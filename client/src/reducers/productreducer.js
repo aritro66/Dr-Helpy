@@ -3,6 +3,8 @@ import {
   END_LOADING,
   FETCH_ALL_PRODUCTLIST,
   FETCH_PRODUCTLIST_BY_ID,
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -20,6 +22,20 @@ export default function productreducer(state = initialState, action) {
       return { ...state, data: action.payload };
     case FETCH_PRODUCTLIST_BY_ID:
       return { ...state, data: action.payload };
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        data: { data: [action.payload, ...state.data?.data] },
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        data: {
+          data: state.data?.data.filter(
+            (product) => product._id !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }

@@ -4,14 +4,7 @@ import {
   BLOCK,
   UNBLOCK,
 } from "../constants/actionTypes";
-import {
-  fetchUsers,
-  block,
-  unblock,
-  addproduct,
-  deleteproduct,
-} from "../api/index";
-import { getProducts } from "./productactions";
+import { fetchUsers, block, unblock } from "../api/index";
 
 export const UserList = () => async (dispatch) => {
   try {
@@ -38,32 +31,6 @@ export const UnBlockUser = (id) => async (dispatch) => {
   try {
     await unblock(id);
     dispatch({ type: UNBLOCK, payload: id });
-  } catch (error) {
-    dispatch({ type: ERROR, error });
-    console.log(error);
-  }
-};
-
-export const AddProduct = (formData) => async (dispatch) => {
-  try {
-    const d = await addproduct(formData).then((res) => {
-      getProducts();
-      return res;
-    });
-    console.log(d);
-  } catch (error) {
-    dispatch({ type: ERROR, error });
-    console.log(error);
-  }
-};
-
-export const DeleteProduct = (id) => async (dispatch) => {
-  try {
-    const d = await deleteproduct(id).then((res) => {
-      getProducts();
-      return res;
-    });
-    console.log(d);
   } catch (error) {
     dispatch({ type: ERROR, error });
     console.log(error);

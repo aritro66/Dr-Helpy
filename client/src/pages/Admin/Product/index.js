@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddProduct, DeleteProduct } from "../../../actions/adminactions";
 import Product from "../../../components/Admin/Product";
-import { getProducts } from "../../../actions/productactions";
+import {
+  getProducts,
+  AddProduct,
+  DeleteProduct,
+} from "../../../actions/productactions";
 
 export default function ProductS() {
   const [showModal, setShowModal] = useState(false);

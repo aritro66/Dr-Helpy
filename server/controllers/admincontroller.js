@@ -67,7 +67,7 @@ const addproduct = async (req, res) => {
       },
     ]);
     // console.log(data);
-    res.json({ data: data[0]._id, success: "worked" });
+    res.json(data[0]);
   } catch (error) {
     console.log(error);
     res.status(401).send("failed");
@@ -79,7 +79,7 @@ const productDeleteById = async (req, res) => {
     console.log(req.body);
     const chk = await productlistscreater.findByIdAndDelete(req.body.id);
     console.log(chk);
-    res.json("success");
+    res.json(chk._id);
   } catch (error) {
     console.log(error);
     res.status(401).send("couldn't delete");
