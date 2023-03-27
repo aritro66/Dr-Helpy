@@ -79,3 +79,5 @@ export const UpdateUser = (id, formData) =>
 
 export const fetchReview = (id) => API.get(`productlist/review/${id}`);
 export const addReview = (data) => API.post("productlist/addreview", data);
+
+export const generatesignupotp = (email) => API.post("/otp", { email: email });

@@ -1,6 +1,9 @@
 const bcrypt = require("bcryptjs"); // encrypting password
 const jwt = require("jsonwebtoken"); // json web token
 const creater = require("../models/users");
+const nodemailer = require("nodemailer"); // sending mail using node
+const otpGenerator = require("otp-generator");
+const otpcreater = require("../models/otps");
 
 let refreshTokens = [];
 
@@ -33,6 +36,50 @@ const generateRefreshToken = (user) => {
     },
     process.env.JWTREFRESHKEY
   );
+};
+
+const generateOTP = () => {
+  return otpGenerator.generate(6, { upperCase: false, specialChars: false });
+};
+
+async function sendmail(email, otp) {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: `${process.env.AUTHUSER}`, // auth user gmail
+        pass: `${process.env.AUTHPASSWORD}`, // auth user password
+      },
+    });
+
+    const mailOptions = {
+      to: email,
+      subject: "Dr. Helpy OTP",
+      text: `your otp no is ${otp}`,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    // sending otp by mail
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const signupotp = async (req, res) => {
+  try {
+    const otp = generateOTP();
+    await sendmail(req.body.email, otp);
+    const now = new Date();
+    const end = new Date(now.getTime() + 2 * 60 * 1000).getTime();
+    const data = await otpcreater.insertMany([{ otpno: otp, etime: end }]);
+    console.log(data);
+    res.json("success");
+  } catch (error) {
+    console.log(error);
+    res.status(400).json("Something went wrong");
+  }
 };
 
 const login = async (req, res) => {
@@ -77,7 +124,16 @@ const signup = async (req, res) => {
   if (req.body.password1 == req.body.password2) {
     // checks if both password equal
     try {
-      var salt = bcrypt.genSaltSync(10); // generating salt
+      const now = new Date().getTime(); // getting current time in millisecond
+      const checkotp = await otpcreater.find({ otpno: req.body.otp });
+
+      if (
+        (checkotp.length !== 0 && parseInt(checkotp[0].etime) >= now) === false
+      ) {
+        throw new Error("OTP expired");
+      }
+
+      const salt = bcrypt.genSaltSync(10); // generating salt
       // salt is a string of charcters different from password
       const password = req.body.password1;
       const pass = await bcrypt.hashSync(password.toString(), salt);
@@ -163,4 +219,5 @@ module.exports = {
   logout,
   refresh,
   updateuser,
+  signupotp,
 };

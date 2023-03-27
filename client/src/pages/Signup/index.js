@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/authactions";
 import { Link } from "react-router-dom";
+import { generatesignupotp } from "../../api";
 export default function Signup() {
   const initialState = {
     fname: "",
@@ -12,6 +13,7 @@ export default function Signup() {
     password1: "",
     password2: "",
     phno: "",
+    otp: "",
   };
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
@@ -25,6 +27,18 @@ export default function Signup() {
     e.preventDefault();
     dispatch(signup({ ...form }, navigate));
   };
+  const handleGenerate = async () => {
+    if (!form?.email) {
+      alert("Please enter email first");
+      return;
+    }
+    try {
+      await generatesignupotp(form.email);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(form);
 
   return (
     <div id={signupStyles.signup}>
@@ -76,7 +90,19 @@ export default function Signup() {
           />
           <br />
           <br />
-
+          <input
+            type="text"
+            id={signupStyles.otp}
+            placeholder="OTP"
+            name="otp"
+            onChange={handleChange}
+            required
+          />
+          <button id={signupStyles.generate} onClick={handleGenerate}>
+            Generate
+          </button>
+          <br />
+          <br></br>
           <div className={signupStyles["password-layout"]}>
             <input
               type={!showPassword ? "password" : "text"}
