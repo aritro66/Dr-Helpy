@@ -7,6 +7,7 @@ const {
   addproduct,
   productDeleteById,
   updateproductimage,
+  updateproductdetails,
 } = require("../controllers/admincontroller");
 const { verify } = require("../middlewares/auth");
 const { uploadimage } = require("../middlewares/fileupload");
@@ -23,12 +24,14 @@ router.post(
   uploadimage.single("img_upload"),
   addproduct
 );
+
 router.put(
   "/updateimg",
   verify,
   uploadimage.single("new_img_upload"),
   updateproductimage
 );
+router.put("/updateproduct/:id", verify, updateproductdetails);
 router.delete("/deleteproduct", verify, productDeleteById);
 
 module.exports = router;

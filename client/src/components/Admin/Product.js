@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProductImage } from "../../actions/productactions";
 
-export default function Product({ index, product, handleDelete }) {
+export default function Product({ index, product, handleDelete, handleEdit }) {
   const dispatch = useDispatch();
   const handleChange = (e) => {
     if (e.target.name === "new_img_upload") {
@@ -59,6 +59,19 @@ export default function Product({ index, product, handleDelete }) {
         >
           <i class="fa-sharp fa-solid fa-trash"></i>
         </button>
+      </td>
+      <td className="align-middle">
+        <i
+          className="fas fa-pen"
+          onClick={() => {
+            handleEdit(product._id, {
+              name: product.name,
+              desc: product.desc,
+              price: product.price,
+              rating: product.rating,
+            });
+          }}
+        ></i>
       </td>
     </tr>
   );

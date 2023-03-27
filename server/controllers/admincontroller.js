@@ -86,7 +86,6 @@ const updateproductimage = async (req, res) => {
   try {
     // console.log(req.file);
     // console.log(req.body);
-
     const { id } = req.body;
     // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
@@ -96,6 +95,20 @@ const updateproductimage = async (req, res) => {
     const data = await productlistscreater.findOneAndUpdate(
       { _id: id },
       { $set: { url: upload_cloudinary.secure_url } },
+      { new: true }
+    );
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
+const updateproductdetails = async (req, res) => {
+  try {
+    const data = await productlistscreater.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
       { new: true }
     );
     res.json(data);
@@ -124,4 +137,5 @@ module.exports = {
   addproduct,
   productDeleteById,
   updateproductimage,
+  updateproductdetails,
 };

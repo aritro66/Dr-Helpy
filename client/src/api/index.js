@@ -69,6 +69,8 @@ export const updateimg = (id, formData) =>
       },
     }
   );
+export const updateproduct = (id, formData) =>
+  API.put(`/updateproduct/${id}`, formData);
 export const deleteproduct = (id) =>
   API.delete("/deleteproduct", { data: { id: id } });
 
