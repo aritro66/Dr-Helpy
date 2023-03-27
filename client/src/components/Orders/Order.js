@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Order({ order, index }) {
+  let total = 0;
   return (
     <>
       <div className="mb-4 p-4 mt-2" style={{ backgroundColor: "white" }}>
@@ -17,6 +18,7 @@ export default function Order({ order, index }) {
         </h5>
         {JSON.parse(order.order).map((dataele) => {
           console.log(dataele);
+          total = total + dataele.price * dataele.quantity;
           return (
             <div className="card rounded-3">
               <div className="card-body p-4">
@@ -52,6 +54,7 @@ export default function Order({ order, index }) {
             </div>
           );
         })}
+        <h5 className="mt-3">Total: ₹{total}</h5>
       </div>
     </>
   );

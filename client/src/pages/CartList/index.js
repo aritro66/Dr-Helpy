@@ -29,7 +29,7 @@ export default function CartList() {
     }
   };
   console.log(cartdata);
-
+  let total = 0;
   return (
     <section
       className="h-100"
@@ -45,6 +45,7 @@ export default function CartList() {
               <p className="fw-small">No product</p>
             ) : (
               cartdata.map((ele) => {
+                total += ele.price * ele.quantity;
                 return (
                   <Cart
                     cart={ele}
@@ -58,6 +59,7 @@ export default function CartList() {
 
             <div className="card">
               <div className="card-body">
+                <h5 className="fw-bold">Total Amount : ₹{total}</h5>
                 <button
                   type="button"
                   className="btn btn-warning btn-block btn-lg"
