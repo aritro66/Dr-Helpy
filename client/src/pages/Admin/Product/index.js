@@ -158,6 +158,7 @@ export default function ProductS() {
                   <tr>
                     <th scope="col">Sno.</th>
                     <th scope="col">Image</th>
+                    <th scope="col"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col"></th>

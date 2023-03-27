@@ -21,3 +21,4 @@ export const UNBLOCK = "UNBLOCK";
 export const EMPTY_CART = "EMPTY_CART";
 export const UPDATE_USER = "UPDATE_USER";
 export const FETCH_ALL_REVIEWS = "FETCH_ALL_REVIEWS";
+export const UPDATE_IMAGE = "UPDATE_IMAGE";

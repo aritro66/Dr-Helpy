@@ -5,6 +5,7 @@ import {
   FETCH_PRODUCTLIST_BY_ID,
   ADD_PRODUCT,
   DELETE_PRODUCT,
+  UPDATE_IMAGE,
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -26,6 +27,18 @@ export default function productreducer(state = initialState, action) {
       return {
         ...state,
         data: { data: [action.payload, ...state.data?.data] },
+      };
+    case UPDATE_IMAGE:
+      return {
+        ...state,
+        data: {
+          data: [
+            action.payload,
+            ...state.data?.data.filter(
+              (product) => product._id !== action.payload._id
+            ),
+          ],
+        },
       };
     case DELETE_PRODUCT:
       return {

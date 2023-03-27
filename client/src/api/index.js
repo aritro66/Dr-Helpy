@@ -59,6 +59,16 @@ export const addproduct = (formData) =>
       "Content-Type": "multipart/form-data",
     },
   });
+export const updateimg = (id, formData) =>
+  API.put(
+    "/updateimg",
+    { id: id, ...formData },
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
 export const deleteproduct = (id) =>
   API.delete("/deleteproduct", { data: { id: id } });
 

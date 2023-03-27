@@ -6,12 +6,14 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   ERROR,
+  UPDATE_IMAGE,
 } from "../constants/actionTypes";
 import {
   fetchProductLists,
   fetchProductListsById,
   addproduct,
   deleteproduct,
+  updateimg,
 } from "../api/index";
 
 export const getProducts = () => async (dispatch) => {
@@ -32,6 +34,17 @@ export const getProductsById = (id) => async (dispatch) => {
     dispatch({ type: FETCH_PRODUCTLIST_BY_ID, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateProductImage = (id, formData) => async (dispatch) => {
+  try {
+    const d = await updateimg(id, formData);
+    console.log(d);
+    dispatch({ type: UPDATE_IMAGE, payload: d.data });
+  } catch (error) {
+    dispatch({ type: ERROR, error });
     console.log(error);
   }
 };
