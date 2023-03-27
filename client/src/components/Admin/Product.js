@@ -5,11 +5,7 @@ export default function Product({ index, product, handleDelete }) {
     <tr>
       <th scope="row">{index + 1}</th>
       <td>
-        <img
-          src={`data:image/${product.mimetype};base64, ${product.img}`}
-          width="100px"
-          height="100px"
-        />
+        <img src={`${product.url}`} width="100px" height="100px" />
       </td>
       <td>{product.name}</td>
       <td style={{ textTransform: "none" }}>₹{product.price}</td>

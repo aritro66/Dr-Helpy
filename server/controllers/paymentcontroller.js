@@ -11,12 +11,25 @@ const checkoutform = async (req, res) => {
             product_data: {
               name: item.name,
             },
-            unit_amount: Number(item.price.slice(1).split(".").join("")),
+            unit_amount: Number(item.price.split(".").join("")),
           },
           quantity: item.quantity,
         };
       })
     );
+    req.body.cart.map((item) => {
+      // console.log(it);
+      return {
+        price_data: {
+          currency: "inr",
+          product_data: {
+            name: item.name,
+          },
+          unit_amount: Number(item.price.split(".").join("")),
+        },
+        quantity: item.quantity,
+      };
+    });
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
@@ -27,7 +40,7 @@ const checkoutform = async (req, res) => {
             product_data: {
               name: item.name,
             },
-            unit_amount: Number(item.price.slice(1).split(".").join("")),
+            unit_amount: Number(item.price.split(".").join("")),
           },
           quantity: item.quantity,
         };

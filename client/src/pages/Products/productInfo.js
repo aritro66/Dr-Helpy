@@ -129,7 +129,7 @@ export default function ProductInfo() {
             <div className="col-lg-5 col-md-6 col-6">
               <img
                 className=""
-                src={`data:image/${data.mimetype};base64, ${data.img}`}
+                src={`${data.url}`}
                 id={productsStyles.MainImg}
                 style={{ height: "200px", width: "200px" }}
                 alt=""

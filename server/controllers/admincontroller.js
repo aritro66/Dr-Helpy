@@ -3,6 +3,12 @@ const creater = require("../models/users");
 const productlistscreater = require("../models/productlists");
 const fs = require("fs");
 const path = require("path");
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRETKEY,
+});
 
 const users = async (req, res) => {
   const data = await creater.find({ admin: { $ne: true } }); // finding user by email
@@ -40,21 +46,25 @@ const unblock = async (req, res, next) => {
   res.json({ msg: "success" });
 };
 
-const imgBufferToBase64 = async (filepath) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path.join(__dirname, "../", filepath), function (err, data) {
-      if (err) reject(err);
-      else resolve(data.toString("base64"));
-    });
-  });
-};
+// const imgBufferToBase64 = async (filepath) => {
+//   return new Promise((resolve, reject) => {
+//     fs.readFile(path.join(__dirname, "../", filepath), function (err, data) {
+//       if (err) reject(err);
+//       else resolve(data.toString("base64"));
+//     });
+//   });
+// };
 
 const addproduct = async (req, res) => {
   try {
     console.log(req.file);
     console.log(req.body);
+
     const { name, price, desc, rating } = req.body;
-    const imgbase64 = await imgBufferToBase64(req.file.path);
+    // const imgbase64 = await imgBufferToBase64(req.file.path);
+    const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
+      public_id: "olympic_flag",
+    });
 
     const data = await productlistscreater.insertMany([
       {
@@ -62,8 +72,7 @@ const addproduct = async (req, res) => {
         price: price,
         desc: desc,
         rating: rating,
-        img: imgbase64,
-        mimetype: req.file.mimetype,
+        url: upload_cloudinary.secure_url,
       },
     ]);
     res.json(data[0]);

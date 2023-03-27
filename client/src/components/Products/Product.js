@@ -17,7 +17,7 @@ export default function Product({
           <div className="col-md-5 col-sm-12 col-xs-12">
             <div className={productsStyles["product-image"]}>
               <img
-                src={`data:image/${product.mimetype};base64, ${product.img}`}
+                src={`${product.url}`}
                 className="img-responsive img-fluid "
                 style={{ maxHeight: "250px", minHeight: "250px" }}
               />

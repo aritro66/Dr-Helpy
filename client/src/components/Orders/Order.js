@@ -16,13 +16,14 @@ export default function Order({ order, index }) {
           }:${new Date(order.createdAt).getSeconds()}`}
         </h5>
         {JSON.parse(order.order).map((dataele) => {
+          console.log(dataele);
           return (
             <div className="card rounded-3">
               <div className="card-body p-4">
                 <div className="row d-flex justify-content-between align-items-center">
                   <div className="col-md-2 col-lg-2 col-xl-2">
                     <img
-                      src={`data:image/${dataele.mimetype};base64, ${dataele.img}`}
+                      src={`${dataele.url}`}
                       className="img-fluid rounded-3"
                       alt="Cotton T-shirt"
                     />
