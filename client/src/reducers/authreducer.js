@@ -55,7 +55,11 @@ export default function authReducer(state = initialState, action) {
         admin: false,
       };
     case UPDATE_USER:
-      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+      const updated_user = JSON.parse(localStorage.getItem("profile"));
+      localStorage.setItem(
+        "profile",
+        JSON.stringify({ ...updated_user, ...action.payload })
+      );
       return {
         ...state,
         id: action.payload.id,
@@ -63,9 +67,7 @@ export default function authReducer(state = initialState, action) {
         fname: action.payload.fname,
         lname: action.payload.lname,
         phno: action.payload.phno,
-        email: action.payload.email,
         errors: null,
-        admin: action.payload.admin,
       };
     case ERROR:
       return { ...state, error: action.error };
