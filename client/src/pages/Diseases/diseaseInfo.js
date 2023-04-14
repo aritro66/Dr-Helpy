@@ -27,15 +27,15 @@ export default function DiseaseInfo() {
         </p>
 
         {data?.length && (
-          <img className={diseaseStyles["img"]} src={`/${data[0].image}`} />
+          <img className={diseaseStyles["img"]} src={`${data[0].url}`} />
         )}
         <p>
           <strong>Symptoms</strong>
         </p>
         <ul>
           {data?.length &&
-            data[0].symptoms.split("\\n").map((ele) => {
-              return <li>{ele}</li>;
+            data[0].symptoms.split(".").map((ele) => {
+              if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ul>
         <p>
@@ -43,8 +43,8 @@ export default function DiseaseInfo() {
         </p>
         <ol>
           {data?.length &&
-            data[0].cure.split("\\n").map((ele) => {
-              return <li>{ele}</li>;
+            data[0].cure.split(".").map((ele) => {
+              if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ol>
 

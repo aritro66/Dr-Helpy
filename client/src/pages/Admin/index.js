@@ -55,6 +55,15 @@ export default function Admin() {
             <i className="fa fa-cube"></i>
             Products
           </NavLink>
+          <NavLink
+            to="/admin/disease"
+            className={adminStyle.option_link}
+            style={({ isActive }) => {
+              return { color: isActive ? "#0a58ca" : "" };
+            }}
+          >
+            <i class="fas fa-viruses"></i>Diseases
+          </NavLink>
         </div>
         <div
           className="h-100"

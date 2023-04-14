@@ -6,7 +6,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   ERROR,
-  UPDATE_IMAGE,
+  UPDATE_PRODUCT_IMAGE,
   UPDATE_PRODUCT,
 } from "../constants/actionTypes";
 import {
@@ -14,7 +14,7 @@ import {
   fetchProductListsById,
   addproduct,
   deleteproduct,
-  updateimg,
+  updateproductimg,
   updateproduct,
 } from "../api/index";
 
@@ -42,9 +42,9 @@ export const getProductsById = (id) => async (dispatch) => {
 
 export const updateProductImage = (id, formData) => async (dispatch) => {
   try {
-    const d = await updateimg(id, formData);
+    const d = await updateproductimg(id, formData);
     console.log(d);
-    dispatch({ type: UPDATE_IMAGE, payload: d.data });
+    dispatch({ type: UPDATE_PRODUCT_IMAGE, payload: d.data });
   } catch (error) {
     dispatch({ type: ERROR, error });
     console.log(error);

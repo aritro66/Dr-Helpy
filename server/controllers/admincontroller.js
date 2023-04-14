@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const creater = require("../models/users");
 const productlistscreater = require("../models/productlists");
+const diseaselistscreater = require("../models/diseaselists");
 const fs = require("fs");
 const path = require("path");
 const cloudinary = require("cloudinary").v2;
@@ -130,6 +131,78 @@ const productDeleteById = async (req, res) => {
   }
 };
 
+const adddisease = async (req, res) => {
+  try {
+    console.log(req.file);
+    console.log(req.body);
+
+    const { name, symptoms, cure } = req.body;
+    // const imgbase64 = await imgBufferToBase64(req.file.path);
+    const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
+      public_id: "olympic_flag",
+    });
+
+    const data = await diseaselistscreater.insertMany([
+      {
+        name: name,
+        symptoms: symptoms,
+        cure: cure,
+        url: upload_cloudinary.secure_url,
+      },
+    ]);
+    res.status(201).json(data[0]);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
+const updatediseaseimage = async (req, res) => {
+  try {
+    const { id } = req.body;
+    // const imgbase64 = await imgBufferToBase64(req.file.path);
+    const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
+      public_id: "olympic_flag",
+    });
+
+    const data = await diseaselistscreater.findOneAndUpdate(
+      { _id: id },
+      { $set: { url: upload_cloudinary.secure_url } },
+      { new: true }
+    );
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
+const updatediseasedetails = async (req, res) => {
+  try {
+    const data = await diseaselistscreater.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { new: true }
+    );
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
+const diseaseDeleteById = async (req, res) => {
+  try {
+    console.log(req.body);
+    const chk = await diseaselistscreater.findByIdAndDelete(req.body.id);
+    console.log(chk);
+    res.json(chk._id);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("couldn't delete");
+  }
+};
+
 module.exports = {
   users,
   block,
@@ -138,4 +211,8 @@ module.exports = {
   productDeleteById,
   updateproductimage,
   updateproductdetails,
+  adddisease,
+  diseaseDeleteById,
+  updatediseaseimage,
+  updatediseasedetails,
 };

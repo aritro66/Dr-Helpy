@@ -19,6 +19,7 @@ import Doctors from "./pages/Doctors";
 import Dashboard from "./pages/Admin/Dashboard";
 import ProductS from "./pages/Admin/Product";
 import Users from "./pages/Admin/Users";
+import DiseaseS from "./pages/Admin/Disease";
 function App() {
   const { loginin, admin } = useSelector((state) => state.authReducer);
   return (
@@ -75,6 +76,7 @@ function App() {
           <Route path="" element={<Navigate to="users" replace />} />
           <Route path="product" element={<ProductS />} />
           <Route path="users" element={<Users />} />
+          <Route path="disease" element={<DiseaseS />} />
         </Route>
         <Route
           path="/orders"

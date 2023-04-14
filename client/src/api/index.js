@@ -59,9 +59,9 @@ export const addproduct = (formData) =>
       "Content-Type": "multipart/form-data",
     },
   });
-export const updateimg = (id, formData) =>
+export const updateproductimg = (id, formData) =>
   API.put(
-    "/updateimg",
+    "/updateproductimg",
     { id: id, ...formData },
     {
       headers: {
@@ -74,6 +74,26 @@ export const updateproduct = (id, formData) =>
 export const deleteproduct = (id) =>
   API.delete("/deleteproduct", { data: { id: id } });
 
+export const adddisease = (formData) =>
+  API.post("/adddisease", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+export const updatediseaseimg = (id, formData) =>
+  API.put(
+    "/updatediseaseimg",
+    { id: id, ...formData },
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+export const updatedisease = (id, formData) =>
+  API.put(`/updatedisease/${id}`, formData);
+export const deletedisease = (id) =>
+  API.delete("/deletedisease", { data: { id: id } });
 export const UpdateUser = (id, formData) =>
   API.put(`/updateuser?email=${id}`, formData);
 

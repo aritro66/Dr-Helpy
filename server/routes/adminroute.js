@@ -8,6 +8,10 @@ const {
   productDeleteById,
   updateproductimage,
   updateproductdetails,
+  adddisease,
+  updatediseaseimage,
+  updatediseasedetails,
+  diseaseDeleteById,
 } = require("../controllers/admincontroller");
 const { verify } = require("../middlewares/auth");
 const { uploadimage } = require("../middlewares/fileupload");
@@ -26,12 +30,28 @@ router.post(
 );
 
 router.put(
-  "/updateimg",
+  "/updateproductimg",
   verify,
   uploadimage.single("new_img_upload"),
   updateproductimage
 );
 router.put("/updateproduct/:id", verify, updateproductdetails);
 router.delete("/deleteproduct", verify, productDeleteById);
+
+router.post(
+  "/adddisease",
+  verify,
+  uploadimage.single("img_upload"),
+  adddisease
+);
+
+router.put(
+  "/updatediseaseimg",
+  verify,
+  uploadimage.single("new_img_upload"),
+  updatediseaseimage
+);
+router.put("/updatedisease/:id", verify, updatediseasedetails);
+router.delete("/deletedisease", verify, diseaseDeleteById);
 
 module.exports = router;

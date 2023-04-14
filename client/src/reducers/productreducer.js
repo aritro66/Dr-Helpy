@@ -6,7 +6,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
-  UPDATE_IMAGE,
+  UPDATE_PRODUCT_IMAGE,
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -29,7 +29,7 @@ export default function productreducer(state = initialState, action) {
         ...state,
         data: { data: [action.payload, ...state.data?.data] },
       };
-    case UPDATE_IMAGE:
+    case UPDATE_PRODUCT_IMAGE:
       return {
         ...state,
         data: {

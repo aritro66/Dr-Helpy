@@ -7,7 +7,7 @@ export default function Disease({ disease }) {
     <Link to={`/disease/${disease._id}`} style={{ textDecoration: "none" }}>
       <div className={styles["box"]}>
         <div className={styles["image"]}>
-          <img src={disease.image} alt="" />
+          <img src={disease.url} alt="" />
         </div>
         <div className={styles["content"]}>
           <div className={styles["icon"]}></div>
