@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/authactions";
 import { Link } from "react-router-dom";
 import { generatesignupotp } from "../../api";
+import { toast } from "react-toastify";
 export default function Signup() {
   const initialState = {
     fname: "",
@@ -34,11 +35,12 @@ export default function Signup() {
     }
     try {
       await generatesignupotp(form.email);
+      toast.success("OTP Generated 😊");
     } catch (error) {
       console.log(error);
+      toast.error("Failed!");
     }
   };
-  console.log(form);
 
   return (
     <div id={signupStyles.signup}>

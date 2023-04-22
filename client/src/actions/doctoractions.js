@@ -9,7 +9,7 @@ import {
   FETCH_DOCTOR,
   APPROVE,
 } from "../constants/actionTypes";
-
+import { toast } from "react-toastify";
 export const getDoctors = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
@@ -33,8 +33,10 @@ export const approveDoctor = (id) => async (dispatch) => {
     dispatch({ type: START_LOADING });
     const approved = await approve(id);
     dispatch({ type: APPROVE, payload: approved.data });
+    toast.success("Approved 😊");
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
+    toast.error("Failed!");
   }
 };

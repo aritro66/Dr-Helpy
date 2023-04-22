@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../actions/authactions";
 import { Link } from "react-router-dom";
 import { registerDoctor } from "../../api";
+import { toast } from "react-toastify";
 
 export default function DoctorRegister() {
   const initialState = {
@@ -31,10 +32,14 @@ export default function DoctorRegister() {
     await registerDoctor({ ...form })
       .then((res) => {
         if (res.status === 201) {
+          toast.success(
+            "Application Submitted, Please keep checking your emails"
+          );
           navigate("/");
         }
       })
       .catch((err) => {
+        toast.error("Failed!");
         console.log(err);
       });
   };

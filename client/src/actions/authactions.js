@@ -6,14 +6,15 @@ import {
   UPDATE_USER,
 } from "../constants/actionTypes";
 import { LogIn, LogOut, SignUp, UpdateUser } from "../api/index";
-
+import { toast } from "react-toastify";
 export const login = (formData, router) => async (dispatch) => {
   try {
     const { data } = await LogIn(formData);
     dispatch({ type: LOGIN, payload: data });
-
+    toast.success("Successfully Logged In 😊");
     router("/home");
   } catch (error) {
+    toast.error("Wrong password or Wrong user");
     dispatch({ type: ERROR, error });
     console.log(error);
   }
@@ -22,11 +23,11 @@ export const login = (formData, router) => async (dispatch) => {
 export const signup = (formData, router) => async (dispatch) => {
   try {
     const { data } = await SignUp(formData);
-
     dispatch({ type: SIGNUP, payload: data });
-
+    toast.success("Successfully Signed Up 😊");
     router("/home");
   } catch (error) {
+    toast.error(error.response.data);
     dispatch({ type: ERROR, error });
     console.log(error);
   }
@@ -38,7 +39,7 @@ export const logout = (router) => async (dispatch) => {
       JSON.parse(localStorage.getItem("profile")).refreshToken
     );
     dispatch({ type: LOGOUT, payload: data });
-
+    toast.success("Successfully Logged Out 😊");
     router("/login");
   } catch (error) {
     dispatch({ type: ERROR, error });

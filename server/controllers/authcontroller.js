@@ -126,7 +126,10 @@ const signup = async (req, res) => {
     try {
       const now = new Date().getTime(); // getting current time in millisecond
       const checkotp = await otpcreater.find({ otpno: req.body.otp });
-
+      const checkuser = await creater.find({ email: req.body.email });
+      if (checkuser.length !== 0) {
+        throw new Error("Someone already registered using same email");
+      }
       if (
         (checkotp.length !== 0 && parseInt(checkotp[0].etime) >= now) === false
       ) {
@@ -161,8 +164,8 @@ const signup = async (req, res) => {
         refreshToken,
       });
     } catch (err) {
-      console.log(err);
-      res.status(400).json("Unable to sign up");
+      console.log(err.message);
+      res.status(400).json(err.message);
     }
   } else {
     res.status(400).json("Passwords are not same");

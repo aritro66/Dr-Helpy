@@ -9,6 +9,7 @@ import productsStyles from "./products.module.css";
 import { fetchreview } from "../../actions/reviewaction";
 import { addReview } from "../../api";
 import { addtocart } from "../../actions/cartactions";
+import { toast } from "react-toastify";
 
 export default function ProductInfo() {
   const { id } = useParams();
@@ -38,13 +39,19 @@ export default function ProductInfo() {
   }, [refetch]);
 
   const handleSubmit = async () => {
-    await addReview({
-      ...form,
-      productid: id,
-      name: authdata.fname + " " + authdata.lname,
-    });
-    setRefetch(!refetch);
-    setShowModal(false);
+    try {
+      await addReview({
+        ...form,
+        productid: id,
+        name: authdata.fname + " " + authdata.lname,
+      });
+      toast.success("Review Added 😊");
+    } catch (error) {
+      toast.error("Failed!");
+    } finally {
+      setRefetch(!refetch);
+      setShowModal(false);
+    }
   };
 
   const handleClick = (item) => {

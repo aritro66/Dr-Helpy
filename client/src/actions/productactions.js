@@ -17,6 +17,7 @@ import {
   updateproductimg,
   updateproduct,
 } from "../api/index";
+import { toast } from "react-toastify";
 
 export const getProducts = () => async (dispatch) => {
   try {
@@ -45,8 +46,10 @@ export const updateProductImage = (id, formData) => async (dispatch) => {
     const d = await updateproductimg(id, formData);
     console.log(d);
     dispatch({ type: UPDATE_PRODUCT_IMAGE, payload: d.data });
+    toast.success("Image Updated 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -56,8 +59,10 @@ export const updateProductDetails = (id, formData) => async (dispatch) => {
     const d = await updateproduct(id, formData);
     console.log(d);
     dispatch({ type: UPDATE_PRODUCT, payload: d.data });
+    toast.success("Details Updated 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -67,8 +72,10 @@ export const AddProduct = (formData) => async (dispatch) => {
     const d = await addproduct(formData);
     console.log(d);
     dispatch({ type: ADD_PRODUCT, payload: d.data });
+    toast.success("Product Added 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -78,8 +85,10 @@ export const DeleteProduct = (id) => async (dispatch) => {
     const d = await deleteproduct(id);
     console.log(d);
     dispatch({ type: DELETE_PRODUCT, payload: id });
+    toast.success("Product Deleted 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };

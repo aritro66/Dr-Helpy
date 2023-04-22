@@ -22,6 +22,9 @@ import Users from "./pages/Admin/Users";
 import DiseaseS from "./pages/Admin/Disease";
 import DoctorRegister from "./pages/DoctorRegister";
 import DoctorS from "./pages/Admin/Doctor";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const { loginin, admin } = useSelector((state) => state.authReducer);
   return (
@@ -98,6 +101,7 @@ function App() {
           element={loginin ? <Success /> : <Navigate to="/home" />}
         />
       </Routes>
+      <ToastContainer position="top-center" autoClose={2000} />
     </BrowserRouter>
   );
 }

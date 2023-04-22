@@ -17,6 +17,7 @@ import {
   updatediseaseimg,
   updatedisease,
 } from "../api";
+import { toast } from "react-toastify";
 
 export const getDiseases = () => async (dispatch) => {
   try {
@@ -45,8 +46,10 @@ export const updateDiseaseImage = (id, formData) => async (dispatch) => {
     const d = await updatediseaseimg(id, formData);
     console.log(d);
     dispatch({ type: UPDATE_DISEASE_IMAGE, payload: d.data });
+    toast.success("Image Updated 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -56,8 +59,10 @@ export const updateDiseaseDetails = (id, formData) => async (dispatch) => {
     const d = await updatedisease(id, formData);
     console.log(d);
     dispatch({ type: UPDATE_DISEASE, payload: d.data });
+    toast.success("Details Updated 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -67,8 +72,10 @@ export const AddDisease = (formData) => async (dispatch) => {
     const d = await adddisease(formData);
     console.log(d);
     dispatch({ type: ADD_DISEASE, payload: d.data });
+    toast.success("New Disease Added 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
@@ -78,8 +85,10 @@ export const DeleteDisease = (id) => async (dispatch) => {
     const d = await deletedisease(id);
     console.log(d);
     dispatch({ type: DELETE_DISEASE, payload: id });
+    toast.success("Disease Deleted 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };
