@@ -20,6 +20,8 @@ import Dashboard from "./pages/Admin/Dashboard";
 import ProductS from "./pages/Admin/Product";
 import Users from "./pages/Admin/Users";
 import DiseaseS from "./pages/Admin/Disease";
+import DoctorRegister from "./pages/DoctorRegister";
+import DoctorS from "./pages/Admin/Doctor";
 function App() {
   const { loginin, admin } = useSelector((state) => state.authReducer);
   return (
@@ -32,6 +34,10 @@ function App() {
         <Route
           path="/signup"
           element={!loginin ? <Signup /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/registration"
+          element={!loginin ? <DoctorRegister /> : <Navigate to="/home" />}
         />
         <Route
           path="/login"
@@ -77,6 +83,7 @@ function App() {
           <Route path="product" element={<ProductS />} />
           <Route path="users" element={<Users />} />
           <Route path="disease" element={<DiseaseS />} />
+          <Route path="doctor" element={<DoctorS />} />
         </Route>
         <Route
           path="/orders"

@@ -1,9 +1,9 @@
-const jwt = require("jsonwebtoken");
 const creater = require("../models/users");
 const productlistscreater = require("../models/productlists");
 const diseaselistscreater = require("../models/diseaselists");
-const fs = require("fs");
-const path = require("path");
+const doctorcreater = require("../models/doctors");
+const { v4: uuidv4 } = require("uuid");
+
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -47,15 +47,6 @@ const unblock = async (req, res, next) => {
   res.json({ msg: "success" });
 };
 
-// const imgBufferToBase64 = async (filepath) => {
-//   return new Promise((resolve, reject) => {
-//     fs.readFile(path.join(__dirname, "../", filepath), function (err, data) {
-//       if (err) reject(err);
-//       else resolve(data.toString("base64"));
-//     });
-//   });
-// };
-
 const addproduct = async (req, res) => {
   try {
     console.log(req.file);
@@ -64,7 +55,7 @@ const addproduct = async (req, res) => {
     const { name, price, desc, rating } = req.body;
     // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
-      public_id: "olympic_flag",
+      public_id: uuidv4(),
     });
 
     const data = await productlistscreater.insertMany([
@@ -90,7 +81,7 @@ const updateproductimage = async (req, res) => {
     const { id } = req.body;
     // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
-      public_id: "olympic_flag",
+      public_id: uuidv4(),
     });
 
     const data = await productlistscreater.findOneAndUpdate(
@@ -203,6 +194,19 @@ const diseaseDeleteById = async (req, res) => {
   }
 };
 
+const approveDoctorById = async (req, res) => {
+  try {
+    const data = await doctorcreater.findByIdAndUpdate(req.body.id, {
+      isapproved: true,
+    });
+    console.log(data);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
 module.exports = {
   users,
   block,
@@ -215,4 +219,5 @@ module.exports = {
   diseaseDeleteById,
   updatediseaseimage,
   updatediseasedetails,
+  approveDoctorById,
 };

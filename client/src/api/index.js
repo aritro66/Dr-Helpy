@@ -101,3 +101,13 @@ export const fetchReview = (id) => API.get(`productlist/review/${id}`);
 export const addReview = (data) => API.post("productlist/addreview", data);
 
 export const generatesignupotp = (email) => API.post("/otp", { email: email });
+
+export const fetchApprovedDoctors = () => API.get("/doctors/approved");
+export const fetchUnApprovedDoctors = () => API.get("/doctors/unapproved");
+export const registerDoctor = (formData) =>
+  API.post("/doctors/registerdoctor", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+export const approveDoctor = (id) => API.put("/approve", { id: id });

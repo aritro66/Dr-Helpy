@@ -62,7 +62,16 @@ export default function Admin() {
               return { color: isActive ? "#0a58ca" : "" };
             }}
           >
-            <i class="fas fa-viruses"></i>Diseases
+            <i className="fas fa-virus"></i>Diseases
+          </NavLink>
+          <NavLink
+            to="/admin/doctor"
+            className={adminStyle.option_link}
+            style={({ isActive }) => {
+              return { color: isActive ? "#0a58ca" : "" };
+            }}
+          >
+            <i className="fas fa-user-md"></i>Doctor
           </NavLink>
         </div>
         <div

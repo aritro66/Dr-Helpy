@@ -8,6 +8,7 @@ const diseaseroutes = require("./routes/diseaseroute");
 const adminroutes = require("./routes/adminroute");
 const paymentroutes = require("./routes/paymentroute");
 const orderroutes = require("./routes/orderroute");
+const doctorroutes = require("./routes/doctorroute");
 const morgan = require("morgan");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
@@ -33,6 +34,7 @@ app.use(express.json({ limit: "50mb" })); // parsing json data
 app.use(authroutes);
 app.use("/disease", diseaseroutes);
 app.use("/productlist", productroutes);
+app.use("/doctors", doctorroutes);
 app.use(adminroutes);
 app.use(paymentroutes);
 app.use(orderroutes);
