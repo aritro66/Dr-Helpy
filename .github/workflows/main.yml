@@ -49,6 +49,7 @@ jobs:
           echo CLOUDINARY_API_SECRETKEY=${{ secrets.CLOUDINARY_API_SECRETKEY }} >> .env
 
       - name: NPM install, build and test
+        working-directory: ./server
         run: |
           npm install --force
           npm test
