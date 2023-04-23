@@ -111,3 +111,5 @@ export const registerDoctor = (formData) =>
     },
   });
 export const approveDoctor = (id) => API.put("/approve", { id: id });
+export const deleteDoctor = (id) =>
+  API.delete("/deletedoctor", { data: { id: id } });

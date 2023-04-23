@@ -10,6 +10,9 @@ const doctorSchema = new mongoose.Schema({
   DOR: { type: Date, require: true },
   type: { type: String, require: true },
   workarea: { type: String, require: true },
+  facebook: { type: String, default: "", require: true },
+  twitter: { type: String, default: "", require: true },
+  instagram: { type: String, default: "", require: true },
 });
 // creating model
 const doctorcreater = new mongoose.model("doctors", doctorSchema);

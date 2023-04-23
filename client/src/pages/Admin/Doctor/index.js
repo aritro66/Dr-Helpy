@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDoctors, approveDoctor } from "../../../actions/doctoractions";
+import {
+  getDoctors,
+  approveDoctor,
+  deleteDoctor,
+} from "../../../actions/doctoractions";
 import UnApprovedDoctor from "../../../components/Admin/UnApprovedDoctor";
 import ApprovedDoctor from "../../../components/Admin/ApprovedDoctor";
 
@@ -25,6 +29,11 @@ export default function DoctorS() {
       dispatch(approveDoctor(id));
     }
   };
+
+  const handleDelete = (id) => {
+    dispatch(deleteDoctor(id));
+  };
+
   console.log(data);
   return (
     <>
@@ -46,6 +55,7 @@ export default function DoctorS() {
                     <th scope="col">DOR</th>
                     <th scope="col">Registration No.</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,6 +65,7 @@ export default function DoctorS() {
                         index={index}
                         doctor={ele}
                         handleApprove={handleApprove}
+                        handleDelete={handleDelete}
                       />
                     );
                   })}
@@ -79,6 +90,7 @@ export default function DoctorS() {
                     <th scope="col">Type</th>
                     <th scope="col">DOR</th>
                     <th scope="col">Registration No.</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -87,7 +99,7 @@ export default function DoctorS() {
                       <ApprovedDoctor
                         index={index}
                         doctor={ele}
-                        handleApprove={handleApprove}
+                        handleDelete={handleDelete}
                       />
                     );
                   })}

@@ -97,21 +97,26 @@
   justify-content: center;
 }
 
-#doctor button {
+#doctor a {
   margin: 12px 8px;
   width: 44px;
   height: 44px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.4s;
 }
 
-#doctor button:hover {
+#doctor a:hover {
   opacity: 0.5;
 }
 
-#doctor button i {
+#doctor a i {
+  display: inline-block;
+
   color: #fff;
   font-size: 1.4em;
 }
@@ -122,14 +127,14 @@
  color: #d3263a;
 } */
 
-#doctor button.facebook {
+#doctor a.facebook {
   background-color: #24292e;
 }
 
-#doctor button.twitter {
+#doctor a.twitter {
   background-color: #1da1f2;
 }
 
-#doctor button.instagram {
+#doctor a.instagram {
   background-color: #141212;
 }

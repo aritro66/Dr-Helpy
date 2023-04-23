@@ -13,6 +13,7 @@ const {
   updatediseasedetails,
   diseaseDeleteById,
   approveDoctorById,
+  deleteDoctorById,
 } = require("../controllers/admincontroller");
 const { verify } = require("../middlewares/auth");
 const { uploadimage } = require("../middlewares/fileupload");
@@ -56,5 +57,6 @@ router.put("/updatedisease/:id", verify, updatediseasedetails);
 router.delete("/deletedisease", verify, diseaseDeleteById);
 
 router.put("/approve", approveDoctorById);
+router.delete("/deletedoctor", deleteDoctorById);
 
 module.exports = router;

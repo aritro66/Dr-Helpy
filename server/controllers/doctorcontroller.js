@@ -27,7 +27,18 @@ const registerDoctor = async (req, res) => {
     console.log(req.file);
     console.log(req.body);
 
-    const { name, registrationno, email, phno, DOR, type, workarea } = req.body;
+    const {
+      name,
+      registrationno,
+      email,
+      phno,
+      DOR,
+      type,
+      workarea,
+      facebook,
+      instagram,
+      twitter,
+    } = req.body;
 
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
       public_id: uuidv4(),
@@ -42,6 +53,9 @@ const registerDoctor = async (req, res) => {
         DOR,
         type,
         workarea,
+        facebook,
+        instagram,
+        twitter,
         url: upload_cloudinary.secure_url,
       },
     ]);

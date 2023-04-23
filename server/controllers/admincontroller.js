@@ -170,11 +170,9 @@ const updatediseaseimage = async (req, res) => {
 
 const updatediseasedetails = async (req, res) => {
   try {
-    const data = await diseaselistscreater.findOneAndUpdate(
-      { _id: req.params.id },
-      { $set: req.body },
-      { new: true }
-    );
+    const data = await diseaselistscreater.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -207,6 +205,17 @@ const approveDoctorById = async (req, res) => {
   }
 };
 
+const deleteDoctorById = async (req, res) => {
+  try {
+    const data = await doctorcreater.findByIdAndDelete(req.body.id);
+    console.log(data);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
+};
+
 module.exports = {
   users,
   block,
@@ -220,4 +229,5 @@ module.exports = {
   updatediseaseimage,
   updatediseasedetails,
   approveDoctorById,
+  deleteDoctorById,
 };

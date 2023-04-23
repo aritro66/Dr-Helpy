@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import doctorStyle from "./doctor.module.css";
 import { doctordata } from "../../constants/doctors";
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctors } from "../../actions/doctoractions";
 import Styles from "../Home/home.module.css";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Doctor from "../../components/Doctors/Doctor";
 
 export default function Doctors() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.doctorreducer?.data1?.data);
+
+  useEffect(() => {
+    dispatch(getDoctors());
+  }, []);
   return (
     <>
       <Navbar styles={Styles} />
@@ -29,9 +37,13 @@ export default function Doctors() {
           </p>
         </div>
         <div className={doctorStyle["abc"]}>
-          {doctordata.map((doctor) => {
-            return <Doctor doctor={doctor} doctorStyle={doctorStyle} />;
-          })}
+          {!data?.length ? (
+            <p>No Doctors Available</p>
+          ) : (
+            data.map((doctor) => {
+              return <Doctor doctor={doctor} doctorStyle={doctorStyle} />;
+            })
+          )}
         </div>
       </div>
       <Footer styles={Styles} />

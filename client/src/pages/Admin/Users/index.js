@@ -5,8 +5,6 @@ import {
   UnBlockUser,
   BlockUser,
 } from "../../../actions/adminactions";
-import { useNavigate, Outlet } from "react-router-dom";
-import { logout } from "../../../actions/authactions";
 import User from "../../../components/Admin/User";
 
 export default function Users() {
@@ -33,7 +31,7 @@ export default function Users() {
             <div>
               <h3 className="display-5 mb-4 text-black">Users</h3>
             </div>
-            {!data ? (
+            {!data?.length ? (
               <p>No users registered</p>
             ) : (
               <table className="table table-hover fs-md-3 fs-4">

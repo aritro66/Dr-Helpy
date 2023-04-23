@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import signupStyles from "./signup.module.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signup } from "../../actions/authactions";
 import { Link } from "react-router-dom";
 import { generatesignupotp } from "../../api";
@@ -158,6 +158,9 @@ export default function Signup() {
           <br />
           <span>Already have an Account? </span>
           <Link to="/login">Log In</Link>
+          <br />
+          <span>Register as a Doctor? </span>
+          <Link to="/registration">Fill form</Link>
         </div>
       </form>
     </div>

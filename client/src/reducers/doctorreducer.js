@@ -3,6 +3,7 @@ import {
   END_LOADING,
   FETCH_DOCTOR,
   APPROVE,
+  DELETE_DOCTOR,
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -27,6 +28,20 @@ export default function doctorreducer(state = initialState, action) {
       return {
         ...state,
         data1: { data: [action.payload, ...state.data1?.data] },
+        data2: {
+          data: state.data2?.data.filter(
+            (doctor) => doctor._id !== action.payload._id
+          ),
+        },
+      };
+    case DELETE_DOCTOR:
+      return {
+        ...state,
+        data1: {
+          data: state.data1?.data.filter(
+            (doctor) => doctor._id !== action.payload._id
+          ),
+        },
         data2: {
           data: state.data2?.data.filter(
             (doctor) => doctor._id !== action.payload._id

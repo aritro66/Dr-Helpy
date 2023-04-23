@@ -58,7 +58,7 @@ export default function ProductS() {
                 +Add
               </button>
             </div>
-            {!data ? (
+            {!data?.length ? (
               <p>No products added</p>
             ) : (
               <table className="table table-hover table-responsive fs-md-3 fs-4">

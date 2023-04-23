@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import registerStyles from "./register.module.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../../actions/authactions";
 import { Link } from "react-router-dom";
 import { registerDoctor } from "../../api";
 import { toast } from "react-toastify";
@@ -16,10 +14,12 @@ export default function DoctorRegister() {
     DOR: "",
     type: "",
     workarea: "",
+    instagram: "",
+    facebook: "",
+    twitter: "",
   };
   const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     if (e.target.name === "doctor_img") {
@@ -129,15 +129,38 @@ export default function DoctorRegister() {
           />
           <br />
           <br />
-          <p id={registerStyles.errortext}>{/* <%= error %> */}</p>
-          {/* <a href="./forgotpassword" id="forgotpassword">Forgot Password?</a> */}
-
+          <input
+            type="text"
+            placeholder="🔗 twitter (optional)"
+            name="twitter"
+            onChange={handleChange}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="🔗 instagram (optional)"
+            name="instagram"
+            onChange={handleChange}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="🔗 facebook (optional)"
+            name="facebook"
+            onChange={handleChange}
+          />
+          <br />
           <br />
 
           <button type="submit" id={registerStyles.submit}>
             Submit
           </button>
           <br />
+          <br />
+          <span>Sign up as user? </span>
+          <Link to="/signup">click here</Link>
           <br />
         </div>
       </form>
