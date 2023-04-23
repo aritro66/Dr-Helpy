@@ -38,3 +38,4 @@ app.use("/doctors", doctorroutes);
 app.use(adminroutes);
 app.use(paymentroutes);
 app.use(orderroutes);
+module.exports = app;

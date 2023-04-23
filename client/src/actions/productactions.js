@@ -79,7 +79,7 @@ export const AddProduct = (formData) => async (dispatch) => {
 
 export const DeleteProduct = (id) => async (dispatch) => {
   try {
-    const d = await deleteproduct(id);
+    await deleteproduct(id);
     dispatch({ type: DELETE_PRODUCT, payload: id });
     toast.success("Product Deleted 😊");
   } catch (error) {
