@@ -33,6 +33,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16.x"
+      - name: create env file
+        working-directory: ./server
+        run: |
+          touch .env
+          echo PASSWORD=${{ env.PASSWORD }} >> .env
+          echo DATABASENAME=${{ env.DATABASENAME }} >> .env
+          echo AUTHUSER=${{ env.AUTHUSER }} >> .env
+          echo AUTHPASSWORD=${{ env.AUTHPASSWORD }} >> .env
+          echo JWTKEY=${{ env.JWTKEY }} >> .env
+          echo JWTREFRESHKEY=${{ env.JWTREFRESHKEY }} >> .env
+          echo STRIPESECRETEKEY=${{ env.STRIPESECRETEKEY }} >> .env
+          echo CLOUDINARY_CLOUD_NAME=${{ env.CLOUDINARY_CLOUD_NAME }} >> .env
+          echo CLOUDINARY_API_KEY=${{ env.CLOUDINARY_API_KEY }} >> .env
+          echo CLOUDINARY_API_SECRETKEY=${{ env.CLOUDINARY_API_SECRETKEY }} >> .env
+
       - name: Install Dependencies
         working-directory: ./server
         run: npm install --force
