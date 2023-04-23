@@ -47,7 +47,7 @@ export default function DiseaseS() {
         <div className="row d-flex p-5 h-100">
           <div className="col-10">
             <div className="d-flex justify-content-between">
-              <h3 className="display-6 mb-4 text-black">Products </h3>
+              <h3 className="display-6 mb-4 text-black">Diseases </h3>
               <button
                 className="btn btn-success mb-4"
                 style={{ fontSize: "15px" }}

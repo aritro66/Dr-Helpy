@@ -126,7 +126,7 @@ const adddisease = async (req, res) => {
 
     const { name, symptoms, cure } = req.body;
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
-      public_id: "olympic_flag",
+      public_id: uuidv4(),
     });
 
     const data = await diseaselistscreater.insertMany([
@@ -147,7 +147,7 @@ const adddisease = async (req, res) => {
 const updatediseaseimage = async (req, res) => {
   try {
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
-      public_id: "olympic_flag",
+      public_id: uuidv4(),
     });
 
     const data = await diseaselistscreater.findByIdAndUpdate(req.body.id, {
