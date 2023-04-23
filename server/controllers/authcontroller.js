@@ -11,11 +11,6 @@ const generateAccessToken = (user) => {
   return jwt.sign(
     {
       id: user._id,
-      fname: user.fname,
-      lname: user.lname,
-      email: user.email,
-      phno: user.phno,
-      admin: user.admin,
     },
     process.env.JWTKEY,
     {
@@ -28,11 +23,6 @@ const generateRefreshToken = (user) => {
   return jwt.sign(
     {
       id: user._id,
-      fname: user.fname,
-      lname: user.lname,
-      email: user.email,
-      phno: user.phno,
-      admin: user.admin,
     },
     process.env.JWTREFRESHKEY
   );
@@ -99,6 +89,7 @@ const login = async (req, res) => {
         const refreshToken = generateRefreshToken(data2[0]);
         refreshTokens.push(refreshToken);
         res.json({
+          id: data2[0]._id,
           fname: data2[0].fname,
           lname: data2[0].lname,
           email: data2[0].email,
@@ -122,7 +113,6 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   console.log(req.body);
   if (req.body.password1 == req.body.password2) {
-    // checks if both password equal
     try {
       const now = new Date().getTime(); // getting current time in millisecond
       const checkotp = await otpcreater.find({ otpno: req.body.otp });
@@ -155,6 +145,7 @@ const signup = async (req, res) => {
       const refreshToken = generateRefreshToken(data[0]);
       refreshTokens.push(refreshToken);
       res.json({
+        id: data[0]._id,
         fname: data[0].fname,
         lname: data[0].lname,
         email: data[0].email,
@@ -207,10 +198,7 @@ const refresh = (req, res) => {
 
 const updateuser = async (req, res) => {
   try {
-    const email = req.query.email;
-    const data = await creater.findOneAndUpdate({ email: email }, req.body, {
-      new: true,
-    });
+    const data = await creater.findByIdAndUpdate(req.query.id, { ...req.body });
     res.json({
       fname: data.fname,
       lname: data.lname,

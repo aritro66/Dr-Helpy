@@ -95,7 +95,7 @@ export const updatedisease = (id, formData) =>
 export const deletedisease = (id) =>
   API.delete("/deletedisease", { data: { id: id } });
 export const UpdateUser = (id, formData) =>
-  API.put(`/updateuser?email=${id}`, formData);
+  API.put(`/updateuser?id=${id}`, formData);
 
 export const fetchReview = (id) => API.get(`productlist/review/${id}`);
 export const addReview = (data) => API.post("productlist/addreview", data);

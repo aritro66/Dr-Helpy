@@ -8,7 +8,7 @@ const diseaseList = async (req, res) => {
 };
 
 const diseaseListById = async (req, res) => {
-  const singleDisease = await diseaselistscreater.find({ _id: req.params.id });
+  const singleDisease = await diseaselistscreater.findById(req.params.id);
   res.json(singleDisease);
 };
 

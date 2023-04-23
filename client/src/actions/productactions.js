@@ -44,7 +44,6 @@ export const getProductsById = (id) => async (dispatch) => {
 export const updateProductImage = (id, formData) => async (dispatch) => {
   try {
     const d = await updateproductimg(id, formData);
-    console.log(d);
     dispatch({ type: UPDATE_PRODUCT_IMAGE, payload: d.data });
     toast.success("Image Updated 😊");
   } catch (error) {
@@ -57,7 +56,6 @@ export const updateProductImage = (id, formData) => async (dispatch) => {
 export const updateProductDetails = (id, formData) => async (dispatch) => {
   try {
     const d = await updateproduct(id, formData);
-    console.log(d);
     dispatch({ type: UPDATE_PRODUCT, payload: d.data });
     toast.success("Details Updated 😊");
   } catch (error) {
@@ -70,7 +68,6 @@ export const updateProductDetails = (id, formData) => async (dispatch) => {
 export const AddProduct = (formData) => async (dispatch) => {
   try {
     const d = await addproduct(formData);
-    console.log(d);
     dispatch({ type: ADD_PRODUCT, payload: d.data });
     toast.success("Product Added 😊");
   } catch (error) {
@@ -83,7 +80,6 @@ export const AddProduct = (formData) => async (dispatch) => {
 export const DeleteProduct = (id) => async (dispatch) => {
   try {
     const d = await deleteproduct(id);
-    console.log(d);
     dispatch({ type: DELETE_PRODUCT, payload: id });
     toast.success("Product Deleted 😊");
   } catch (error) {

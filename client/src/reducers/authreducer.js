@@ -8,6 +8,7 @@ import {
 const initialState = {
   loginin: false,
   errors: null,
+  id: "",
   fname: "",
   lname: "",
   phno: "",
@@ -22,6 +23,7 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         loginin: true,
+        id: action.payload.id,
         fname: action.payload.fname,
         lname: action.payload.lname,
         phno: action.payload.phno,
@@ -34,6 +36,7 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         loginin: true,
+        id: action.payload.id,
         fname: action.payload.fname,
         lname: action.payload.lname,
         phno: action.payload.phno,
@@ -47,6 +50,7 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         loginin: false,
+        id: "",
         fname: "",
         lname: "",
         phno: "",
@@ -55,14 +59,13 @@ export default function authReducer(state = initialState, action) {
         admin: false,
       };
     case UPDATE_USER:
-      const updated_user = JSON.parse(localStorage.getItem("profile"));
+      const old_user = JSON.parse(localStorage.getItem("profile"));
       localStorage.setItem(
         "profile",
-        JSON.stringify({ ...updated_user, ...action.payload })
+        JSON.stringify({ ...old_user, ...action.payload })
       );
       return {
         ...state,
-        id: action.payload.id,
         loginin: true,
         fname: action.payload.fname,
         lname: action.payload.lname,
@@ -77,6 +80,7 @@ export default function authReducer(state = initialState, action) {
         return {
           ...state,
           loginin: true,
+          id: JSON.parse(localStorage.getItem("profile")).id,
           fname: JSON.parse(localStorage.getItem("profile")).fname,
           lname: JSON.parse(localStorage.getItem("profile")).lname,
           phno: JSON.parse(localStorage.getItem("profile")).phno,

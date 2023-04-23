@@ -47,13 +47,14 @@ export const logout = (router) => async (dispatch) => {
   }
 };
 
-export const updateuser = (email, formData) => async (dispatch) => {
+export const updateuser = (id, formData) => async (dispatch) => {
   try {
-    const { data } = await UpdateUser(email, formData);
-
+    const { data } = await UpdateUser(id, formData);
     dispatch({ type: UPDATE_USER, payload: data });
+    toast.success("Successfully Updated 😊");
   } catch (error) {
     dispatch({ type: ERROR, error });
+    toast.error("Failed!");
     console.log(error);
   }
 };

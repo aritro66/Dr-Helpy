@@ -17,7 +17,7 @@ export default function MyAccount() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
-    dispatch(updateuser(data.email, form));
+    dispatch(updateuser(data.id, form));
     setShowModal(false);
   };
 

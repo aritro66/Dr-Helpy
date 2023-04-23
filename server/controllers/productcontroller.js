@@ -1,4 +1,3 @@
-// const productcreater = require("../models/products");
 const productlistscreater = require("../models/productlists");
 const reviewcreater = require("../models/reviews");
 const productList = async (req, res) => {
@@ -13,7 +12,7 @@ const productList = async (req, res) => {
 
 const productListById = async (req, res) => {
   try {
-    const productlist = await productlistscreater.find({ _id: req.params.id });
+    const productlist = await productlistscreater.findById(req.params.id);
     res.json(productlist);
   } catch (error) {
     console.log(error);

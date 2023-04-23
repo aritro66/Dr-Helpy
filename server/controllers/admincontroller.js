@@ -27,24 +27,30 @@ const users = async (req, res) => {
   res.json(userinfo);
 };
 
-const block = async (req, res, next) => {
-  console.log(req.body);
-  const result = await creater.updateOne(
-    { _id: req.body.id },
-    { $set: { allow: false } }
-  );
-  console.log(result);
-  res.json({ msg: "success" });
+const block = async (req, res) => {
+  try {
+    const result = await creater.findByIdAndUpdate(req.body.id, {
+      allow: false,
+    });
+    console.log(result);
+    res.json({ msg: "success" });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
 };
 
-const unblock = async (req, res, next) => {
-  console.log(req.body);
-  const result = await creater.updateOne(
-    { _id: req.body.id },
-    { $set: { allow: true } }
-  );
-  console.log(result);
-  res.json({ msg: "success" });
+const unblock = async (req, res) => {
+  try {
+    const result = await creater.findByIdAndUpdate(req.body.id, {
+      allow: true,
+    });
+    console.log(result);
+    res.json({ msg: "success" });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send("failed");
+  }
 };
 
 const addproduct = async (req, res) => {
@@ -53,7 +59,6 @@ const addproduct = async (req, res) => {
     console.log(req.body);
 
     const { name, price, desc, rating } = req.body;
-    // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
       public_id: uuidv4(),
     });
@@ -76,19 +81,13 @@ const addproduct = async (req, res) => {
 
 const updateproductimage = async (req, res) => {
   try {
-    // console.log(req.file);
-    // console.log(req.body);
-    const { id } = req.body;
-    // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
       public_id: uuidv4(),
     });
 
-    const data = await productlistscreater.findOneAndUpdate(
-      { _id: id },
-      { $set: { url: upload_cloudinary.secure_url } },
-      { new: true }
-    );
+    const data = await productlistscreater.findByIdAndUpdate(req.body.id, {
+      url: upload_cloudinary.secure_url,
+    });
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -98,11 +97,9 @@ const updateproductimage = async (req, res) => {
 
 const updateproductdetails = async (req, res) => {
   try {
-    const data = await productlistscreater.findOneAndUpdate(
-      { _id: req.params.id },
-      { $set: req.body },
-      { new: true }
-    );
+    const data = await productlistscreater.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -128,7 +125,6 @@ const adddisease = async (req, res) => {
     console.log(req.body);
 
     const { name, symptoms, cure } = req.body;
-    // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
       public_id: "olympic_flag",
     });
@@ -150,17 +146,13 @@ const adddisease = async (req, res) => {
 
 const updatediseaseimage = async (req, res) => {
   try {
-    const { id } = req.body;
-    // const imgbase64 = await imgBufferToBase64(req.file.path);
     const upload_cloudinary = await cloudinary.uploader.upload(req.file.path, {
       public_id: "olympic_flag",
     });
 
-    const data = await diseaselistscreater.findOneAndUpdate(
-      { _id: id },
-      { $set: { url: upload_cloudinary.secure_url } },
-      { new: true }
-    );
+    const data = await diseaselistscreater.findByIdAndUpdate(req.body.id, {
+      url: upload_cloudinary.secure_url,
+    });
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -188,7 +180,7 @@ const diseaseDeleteById = async (req, res) => {
     res.json(chk._id);
   } catch (error) {
     console.log(error);
-    res.status(401).send("couldn't delete");
+    res.status(401).send("failed");
   }
 };
 
