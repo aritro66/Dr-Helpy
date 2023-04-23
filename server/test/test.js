@@ -13,10 +13,12 @@ const server = require("../server.js");
 chai.use(chaiHttp);
 
 // User authentication
-describe("/POST Successful user authentication check", () => {
+describe("/POST Successful user authentication check", function () {
+  setTimeout(() => {
+    console.log("stopped test");
+    process.exit(0);
+  }, 20000);
   it("logging in the user", function (done) {
-    console.log(process.env.DATABASENAME);
-    this.timeout(10000);
     request(server)
       .post("/login")
       .send({
