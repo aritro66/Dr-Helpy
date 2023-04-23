@@ -23,7 +23,7 @@ const link = `mongodb+srv://${process.env.PASSWORD}:mongodb2002@cluster0.8et7m.m
 mongoose
   .connect(`${link}`, { useNewUrlParser: true, useUnifiedTopology: true }) // to avoid warning
   .then(() => {
-    console.log("success");
+    console.log("mongodb connected");
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); // listen for request
   })
   .catch((err) => console.log(err));
