@@ -37,20 +37,18 @@ jobs:
         working-directory: ./server
         run: |
           touch .env
-          echo PASSWORD=${{ env.PASSWORD }} >> .env
-          echo DATABASENAME=${{ env.DATABASENAME }} >> .env
-          echo AUTHUSER=${{ env.AUTHUSER }} >> .env
-          echo AUTHPASSWORD=${{ env.AUTHPASSWORD }} >> .env
-          echo JWTKEY=${{ env.JWTKEY }} >> .env
-          echo JWTREFRESHKEY=${{ env.JWTREFRESHKEY }} >> .env
-          echo STRIPESECRETEKEY=${{ env.STRIPESECRETEKEY }} >> .env
-          echo CLOUDINARY_CLOUD_NAME=${{ env.CLOUDINARY_CLOUD_NAME }} >> .env
-          echo CLOUDINARY_API_KEY=${{ env.CLOUDINARY_API_KEY }} >> .env
-          echo CLOUDINARY_API_SECRETKEY=${{ env.CLOUDINARY_API_SECRETKEY }} >> .env
+          echo PASSWORD=${{ secrets.PASSWORD }} >> .env
+          echo DATABASENAME=${{ secrets.DATABASENAME }} >> .env
+          echo AUTHUSER=${{ secrets.AUTHUSER }} >> .env
+          echo AUTHPASSWORD=${{ secrets.AUTHPASSWORD }} >> .env
+          echo JWTKEY=${{ secrets.JWTKEY }} >> .env
+          echo JWTREFRESHKEY=${{ secrets.JWTREFRESHKEY }} >> .env
+          echo STRIPESECRETEKEY=${{ secrets.STRIPESECRETEKEY }} >> .env
+          echo CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }} >> .env
+          echo CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }} >> .env
+          echo CLOUDINARY_API_SECRETKEY=${{ secrets.CLOUDINARY_API_SECRETKEY }} >> .env
 
-      - name: Install Dependencies
-        working-directory: ./server
-        run: npm install --force
-      - name: Run Tests
-        working-directory: ./server
-        run: npm run test
+      - name: NPM install, build and test
+        run: |
+          npm install --force
+          npm test
