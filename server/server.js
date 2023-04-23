@@ -20,9 +20,6 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 4001;
 // url to connect mongodb
 const link = `mongodb+srv://${process.env.PASSWORD}:mongodb2002@cluster0.8et7m.mongodb.net/${process.env.DATABASENAME}`;
-console.log(
-  `mongodb+srv://${process.env.PASSWORD}:mongodb2002@cluster0.8et7m.mongodb.net/${process.env.DATABASENAME}`
-);
 mongoose
   .connect(`${link}`, { useNewUrlParser: true, useUnifiedTopology: true }) // to avoid warning
   .then(() => {

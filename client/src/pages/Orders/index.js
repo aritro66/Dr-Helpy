@@ -24,7 +24,7 @@ export default function Orders() {
             <div>
               <h3 className="fw-normal mb-0 text-black">My Orders</h3>
             </div>
-            {orderdata?.length == 0 ? (
+            {orderdata?.length === 0 ? (
               <p>No product</p>
             ) : (
               <>

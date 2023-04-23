@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import doctorStyle from "./doctor.module.css";
-import { doctordata } from "../../constants/doctors";
 import { useDispatch, useSelector } from "react-redux";
 import { getDoctors } from "../../actions/doctoractions";
 import Styles from "../Home/home.module.css";

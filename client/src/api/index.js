@@ -1,12 +1,15 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const API = axios.create({ baseURL: "http://localhost:4001" });
+const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_BASE_URL });
 const refreshToken = async () => {
   try {
-    const res = await axios.post("http://localhost:4001/refresh", {
-      token: JSON.parse(localStorage.getItem("profile")).refreshToken,
-    });
+    const res = await axios.post(
+      `${process.env.REACT_APP_SERVER_BASE_URL}/refresh`,
+      {
+        token: JSON.parse(localStorage.getItem("profile")).refreshToken,
+      }
+    );
     console.log(res);
     return {
       accessToken: res.data.accessToken,
