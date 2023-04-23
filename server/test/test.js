@@ -15,7 +15,8 @@ chai.use(chaiHttp);
 // User authentication
 describe("/POST Successful user authentication check", () => {
   it("logging in the user", function (done) {
-    this.timeout(1000000);
+    console.log(process.env.DATABASENAME);
+    this.timeout(10000);
     request(server)
       .post("/login")
       .send({
