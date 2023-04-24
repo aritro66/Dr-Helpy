@@ -193,7 +193,7 @@ export default function ProductInfo() {
             ></i>
           </h2>
         </div>
-        {reviewdata &&
+        {Array.isArray(reviewdata) &&
           reviewdata?.map((review) => {
             return (
               <div className={productsStyles["product-review"]}>
