@@ -38,11 +38,11 @@ export const logout = (router) => async (dispatch) => {
     const data = await LogOut(
       JSON.parse(localStorage.getItem("profile")).refreshToken
     );
-    dispatch({ type: LOGOUT, payload: data });
+    dispatch({ type: LOGOUT });
     toast.success("Successfully Logged Out 😊");
     router("/login");
   } catch (error) {
-    dispatch({ type: ERROR, error });
+    dispatch({ type: LOGOUT });
     console.log(error);
   }
 };

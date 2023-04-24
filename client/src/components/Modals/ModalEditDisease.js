@@ -75,7 +75,7 @@ export default function ModalEditPredict({
               <div className="md-form mb-5">
                 <label>Disease Cure</label>
                 <input
-                  type="number"
+                  type="text"
                   name="cure"
                   value={form?.cure || initialData?.cure}
                   onChange={handleChange}

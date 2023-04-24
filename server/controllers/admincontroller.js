@@ -29,9 +29,13 @@ const users = async (req, res) => {
 
 const block = async (req, res) => {
   try {
-    const result = await creater.findByIdAndUpdate(req.body.id, {
-      allow: false,
-    });
+    const result = await creater.findByIdAndUpdate(
+      req.body.id,
+      {
+        allow: false,
+      },
+      { new: true }
+    );
     console.log(result);
     res.json({ msg: "success" });
   } catch (error) {
@@ -42,9 +46,13 @@ const block = async (req, res) => {
 
 const unblock = async (req, res) => {
   try {
-    const result = await creater.findByIdAndUpdate(req.body.id, {
-      allow: true,
-    });
+    const result = await creater.findByIdAndUpdate(
+      req.body.id,
+      {
+        allow: true,
+      },
+      { new: true }
+    );
     console.log(result);
     res.json({ msg: "success" });
   } catch (error) {
@@ -85,9 +93,13 @@ const updateproductimage = async (req, res) => {
       public_id: uuidv4(),
     });
 
-    const data = await productlistscreater.findByIdAndUpdate(req.body.id, {
-      url: upload_cloudinary.secure_url,
-    });
+    const data = await productlistscreater.findByIdAndUpdate(
+      req.body.id,
+      {
+        url: upload_cloudinary.secure_url,
+      },
+      { new: true }
+    );
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -97,9 +109,13 @@ const updateproductimage = async (req, res) => {
 
 const updateproductdetails = async (req, res) => {
   try {
-    const data = await productlistscreater.findByIdAndUpdate(req.params.id, {
-      ...req.body,
-    });
+    const data = await productlistscreater.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...req.body,
+      },
+      { new: true }
+    );
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -110,7 +126,9 @@ const updateproductdetails = async (req, res) => {
 const productDeleteById = async (req, res) => {
   try {
     console.log(req.body);
-    const chk = await productlistscreater.findByIdAndDelete(req.body.id);
+    const chk = await productlistscreater.findByIdAndDelete(req.body.id, {
+      new: true,
+    });
     console.log(chk);
     res.json(chk._id);
   } catch (error) {
@@ -150,9 +168,13 @@ const updatediseaseimage = async (req, res) => {
       public_id: uuidv4(),
     });
 
-    const data = await diseaselistscreater.findByIdAndUpdate(req.body.id, {
-      url: upload_cloudinary.secure_url,
-    });
+    const data = await diseaselistscreater.findByIdAndUpdate(
+      req.body.id,
+      {
+        url: upload_cloudinary.secure_url,
+      },
+      { new: true }
+    );
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -162,9 +184,13 @@ const updatediseaseimage = async (req, res) => {
 
 const updatediseasedetails = async (req, res) => {
   try {
-    const data = await diseaselistscreater.findByIdAndUpdate(req.params.id, {
-      ...req.body,
-    });
+    const data = await diseaselistscreater.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...req.body,
+      },
+      { new: true }
+    );
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -175,7 +201,9 @@ const updatediseasedetails = async (req, res) => {
 const diseaseDeleteById = async (req, res) => {
   try {
     console.log(req.body);
-    const chk = await diseaselistscreater.findByIdAndDelete(req.body.id);
+    const chk = await diseaselistscreater.findByIdAndDelete(req.body.id, {
+      new: true,
+    });
     console.log(chk);
     res.json(chk._id);
   } catch (error) {
@@ -186,9 +214,13 @@ const diseaseDeleteById = async (req, res) => {
 
 const approveDoctorById = async (req, res) => {
   try {
-    const data = await doctorcreater.findByIdAndUpdate(req.body.id, {
-      isapproved: true,
-    });
+    const data = await doctorcreater.findByIdAndUpdate(
+      req.body.id,
+      {
+        isapproved: true,
+      },
+      { new: true }
+    );
     console.log(data);
     res.json(data);
   } catch (error) {
@@ -199,7 +231,9 @@ const approveDoctorById = async (req, res) => {
 
 const deleteDoctorById = async (req, res) => {
   try {
-    const data = await doctorcreater.findByIdAndDelete(req.body.id);
+    const data = await doctorcreater.findByIdAndDelete(req.body.id, {
+      new: true,
+    });
     console.log(data);
     res.json(data);
   } catch (error) {

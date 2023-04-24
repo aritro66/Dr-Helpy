@@ -200,7 +200,11 @@ const refresh = (req, res) => {
 
 const updateuser = async (req, res) => {
   try {
-    const data = await creater.findByIdAndUpdate(req.query.id, { ...req.body });
+    const data = await creater.findByIdAndUpdate(
+      req.query.id,
+      { ...req.body },
+      { new: true }
+    );
     res.json({
       fname: data.fname,
       lname: data.lname,
