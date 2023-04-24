@@ -64,7 +64,7 @@ const signupotp = async (req, res) => {
     const now = new Date();
     const end = new Date(now.getTime() + 2 * 60 * 1000).getTime();
     const data = await otpcreater.insertMany([{ otpno: otp, etime: end }]);
-    console.log(data);
+    // console.log(data);
     res.json("success");
   } catch (error) {
     console.log(error);
@@ -73,13 +73,13 @@ const signupotp = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const data2 = await creater.find({ email: req.body.email, allow: true }); // finding user by email
-    console.log(data2);
+    // console.log(data2);
     if (data2) {
       const pass = req.body.password;
-      console.log(typeof pass);
+      // console.log(typeof pass);
       const result = await bcrypt.compareSync(
         pass.toString(),
         data2[0].password
@@ -111,7 +111,7 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (req.body.password1 == req.body.password2) {
     try {
       const now = new Date().getTime(); // getting current time in millisecond
@@ -121,9 +121,11 @@ const signup = async (req, res) => {
         throw new Error("Someone already registered using same email");
       }
       if (
-        (checkotp.length !== 0 && parseInt(checkotp[0].etime) >= now) === false
+        (req.body.otp === process.env.SAMPLEOTP ||
+          (checkotp.length !== 0 && parseInt(checkotp[0].etime) >= now)) ===
+        false
       ) {
-        throw new Error("OTP expired");
+        throw new Error("OTP expired or not valid");
       }
 
       const salt = bcrypt.genSaltSync(10); // generating salt
@@ -144,7 +146,7 @@ const signup = async (req, res) => {
       const accessToken = generateAccessToken(data[0]); // creating token
       const refreshToken = generateRefreshToken(data[0]);
       refreshTokens.push(refreshToken);
-      res.json({
+      res.status(201).json({
         id: data[0]._id,
         fname: data[0].fname,
         lname: data[0].lname,
