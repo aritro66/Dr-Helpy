@@ -12,6 +12,10 @@
     {
       "url": "http://localhost:4001/",
       "description": "Local server"
+    },
+    {
+      "url": "https://drhelpy-backend.onrender.com/",
+      "description": "Deployed server"
     }
   ],
   "tags": [
@@ -539,7 +543,7 @@
         }
       }
     },
-    "/addreview": {
+    "/productlist/addreview": {
       "post": {
         "summary": "Add review",
         "description": "Add review",
@@ -610,7 +614,7 @@
         }
       }
     },
-    "/review": {
+    "/productlist/review": {
       "get": {
         "summary": "Get all reviews",
         "description": "Get all reviews",
@@ -736,33 +740,7 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "TestProduct"
-                  },
-                  "image": {
-                    "type": "string",
-                    "example": "TestPrice"
-                  },
-                  "symptoms": {
-                    "type": "string",
-                    "example": "TestSymptoms"
-                  },
-                  "cure": {
-                    "type": "string",
-                    "example": "TestCure"
-                  }
-                }
-              }
-            }
-          }
-        },
+
         "parameters": [
           {
             "name": "id",
