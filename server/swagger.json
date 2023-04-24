@@ -32,6 +32,15 @@
       "description": "API for authentication in the system"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
   "paths": {
     "/api-docs": {
       "get": {
@@ -49,6 +58,11 @@
         "summary": "Get all orders",
         "description": "Get all orders",
         "tags": ["Orders and Payments"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Orders",
@@ -103,6 +117,11 @@
         "summary": "Confirm order",
         "description": "Confirm order",
         "tags": ["Orders and Payments"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Order confirmed",
@@ -129,6 +148,11 @@
         "summary": "Checkout order",
         "description": "Checkout order",
         "tags": ["Orders and Payments"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Order checkout",
@@ -155,6 +179,12 @@
         "summary": "Get all users",
         "description": "Get all users",
         "tags": ["Users"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Users",
@@ -193,6 +223,11 @@
         "summary": "Block user",
         "description": "Block user",
         "tags": ["Admin"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "User blocked",
@@ -219,6 +254,12 @@
         "summary": "Unblock user",
         "description": "Unblock user",
         "tags": ["Admin"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "User unblocked",
@@ -243,8 +284,48 @@
     "/addproduct": {
       "post": {
         "summary": "Add product",
-        "description": "Add product",
+        "description": "   product",
         "tags": ["Products"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "TestProduct"
+                  },
+                  "price": {
+                    "type": "string",
+                    "example": "TestPrice"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "example": "TestDesc"
+                  },
+                  "uses": {
+                    "type": "string",
+                    "example": "TestUses"
+                  },
+                  "img": {
+                    "type": "string",
+                    "example": "TestImg"
+                  },
+                  "rating": {
+                    "type": "string",
+                    "example": "TestRating"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Product added",
@@ -297,6 +378,11 @@
         "summary": "Get all products",
         "description": "Get all products",
         "tags": ["Products"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Products",
@@ -355,6 +441,42 @@
         "summary": "Get product by id",
         "description": "Get product by id",
         "tags": ["Products"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "TestProduct"
+                  },
+                  "price": {
+                    "type": "string",
+                    "example": "TestPrice"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "example": "TestDesc"
+                  },
+                  "url": {
+                    "type": "string",
+                    "example": "Testurl"
+                  },
+                  "rating": {
+                    "type": "string",
+                    "example": "TestRating"
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "name": "id",
@@ -422,6 +544,40 @@
         "summary": "Add review",
         "description": "Add review",
         "tags": ["Reviews"],
+
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "productId": {
+                    "type": "string",
+                    "example": "TestProductid"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "TestProduct"
+                  },
+                  "rating": {
+                    "type": "string",
+                    "example": "TestRating"
+                  },
+
+                  "desc": {
+                    "type": "string",
+                    "example": "TestDesc"
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "name": "id",
@@ -459,6 +615,11 @@
         "summary": "Get all reviews",
         "description": "Get all reviews",
         "tags": ["Reviews"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Reviews",
@@ -517,6 +678,11 @@
         "summary": "Get all diseases",
         "description": "Get all diseases",
         "tags": ["Diseases"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Diseases",
@@ -565,6 +731,38 @@
         "summary": "Get disease by id",
         "description": "Get disease by id",
         "tags": ["Diseases"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "TestProduct"
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "TestPrice"
+                  },
+                  "symptoms": {
+                    "type": "string",
+                    "example": "TestSymptoms"
+                  },
+                  "cure": {
+                    "type": "string",
+                    "example": "TestCure"
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "name": "id",
@@ -659,6 +857,11 @@
         "summary": "Logout",
         "description": "Logout",
         "tags": ["Users", "Auth"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "User logged out",
@@ -685,6 +888,30 @@
         "summary": "Login",
         "description": "Login",
         "tags": ["Users", "Auth"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "TestEmail"
+                  },
+                  "passsword": {
+                    "type": "string",
+                    "example": "TestPassword"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "User logged in",
@@ -711,21 +938,65 @@
         "summary": "Signup",
         "description": "Signup",
         "tags": ["Users", "Auth"],
-        "responses": {
-          "200": {
-            "description": "User signed up",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "Message",
-                      "example": "success"
-                    }
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fname": {
+                    "type": "string",
+                    "example": "TestFname"
+                  },
+                  "lname": {
+                    "type": "string",
+                    "example": "TestLname"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "TestEmail"
+                  },
+                  "passsword1": {
+                    "type": "string",
+                    "example": "TestP1"
+                  },
+                  "passsword2": {
+                    "type": "string",
+                    "example": "TestP2"
+                  },
+                  "phno": {
+                    "type": "string",
+                    "example": "TestPhno"
+                  },
+                  "otp": {
+                    "type": "string",
+                    "example": "TestOtp"
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "User signed up",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Message",
+                "example": "success"
               }
             }
           }
