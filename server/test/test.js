@@ -37,7 +37,7 @@ describe("/POST Successful user authentication check", function () {
   it("creating a new user", function (done) {
     this.timeout(16000);
     request(server)
-      .post("/signup") // path to the route
+      .post("/signup")
       .send(test_user) // data to be sent
       .end((err, res) => {
         res.should.have.status(201);
@@ -53,7 +53,7 @@ describe("/POST Successful user authentication check", function () {
   it("creating a new user with same email", function (done) {
     this.timeout(16000);
     request(server)
-      .post("/signup") // path to the route
+      .post("/signup")
       .send({ ...test_user, email: "ghosharitro66@gmail.com" }) // data to be sent
       .end((err, res) => {
         res.should.have.status(400);
@@ -66,7 +66,7 @@ describe("/POST Successful user authentication check", function () {
   it("creating a new user with wrong otp", function (done) {
     this.timeout(16000);
     request(server)
-      .post("/signup") // path to the route
+      .post("/signup")
       .send({ ...test_user, otp: "1234" }) // data to be sent
       .end((err, res) => {
         res.should.have.status(400);
