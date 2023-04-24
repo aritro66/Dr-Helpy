@@ -73,7 +73,7 @@ export default function DiseaseS() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((ele, index) => {
+                  {data?.map((ele, index) => {
                     return (
                       <Disease
                         index={index}

@@ -44,7 +44,7 @@ export default function CartList() {
             {cartdata?.length === 0 ? (
               <p className="fw-small">No product</p>
             ) : (
-              cartdata.map((ele) => {
+              cartdata?.map((ele) => {
                 total += ele.price * ele.quantity;
                 return (
                   <Cart

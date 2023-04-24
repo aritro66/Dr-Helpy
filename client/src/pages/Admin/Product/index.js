@@ -74,7 +74,7 @@ export default function ProductS() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((ele, index) => {
+                  {data?.map((ele, index) => {
                     return (
                       <Product
                         index={index}

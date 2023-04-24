@@ -16,7 +16,7 @@ export default function Order({ order, index }) {
             new Date(order.createdAt).getMinutes() + 1
           }:${new Date(order.createdAt).getSeconds()}`}
         </h5>
-        {JSON.parse(order.order).map((dataele) => {
+        {JSON.parse(order.order)?.map((dataele) => {
           console.log(dataele);
           total = total + dataele.price * dataele.quantity;
           return (

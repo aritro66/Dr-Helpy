@@ -44,7 +44,7 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((ele, index) => {
+                  {data?.map((ele, index) => {
                     return (
                       <User
                         index={index}

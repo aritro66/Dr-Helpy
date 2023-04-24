@@ -76,7 +76,7 @@ export default function Home() {
         </div>
       </section>
       <section className={homeStyles["icons-container"]}>
-        {iconSectionList.map((ele) => {
+        {iconSectionList?.map((ele) => {
           return (
             <div className={homeStyles["icons"]}>
               <i className={`fas ${ele.class}`}></i>
@@ -99,7 +99,7 @@ export default function Home() {
           Private online consultations with verified doctors in all specialists
         </p>
         <div className={homeStyles["consult-container"]}>
-          {consultations.map((ele) => {
+          {consultations?.map((ele) => {
             return (
               <div className={homeStyles["box"]}>
                 <div className={homeStyles["image"]}>

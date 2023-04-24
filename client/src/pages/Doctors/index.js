@@ -39,7 +39,7 @@ export default function Doctors() {
           {!data?.length ? (
             <p>No Doctors Available</p>
           ) : (
-            data.map((doctor) => {
+            data?.map((doctor) => {
               return <Doctor doctor={doctor} doctorStyle={doctorStyle} />;
             })
           )}

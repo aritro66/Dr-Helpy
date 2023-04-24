@@ -194,7 +194,7 @@ export default function ProductInfo() {
           </h2>
         </div>
         {reviewdata &&
-          reviewdata.map((review) => {
+          reviewdata?.map((review) => {
             return (
               <div className={productsStyles["product-review"]}>
                 <h4>

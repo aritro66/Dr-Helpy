@@ -28,7 +28,7 @@ export default function Orders() {
               <p>No product</p>
             ) : (
               <>
-                {orderdata.map((ele, index) => {
+                {orderdata?.map((ele, index) => {
                   return <Order order={ele} index={index} />;
                 })}
               </>

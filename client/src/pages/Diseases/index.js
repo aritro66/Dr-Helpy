@@ -30,7 +30,7 @@ export default function Diseases() {
         <br />
         <div className={diseaseStyles["List"]}>
           {Array.isArray(data) &&
-            data.map((ele) => {
+            data?.map((ele) => {
               return <Disease disease={ele} />;
             })}
         </div>

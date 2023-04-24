@@ -57,7 +57,7 @@ export default function About() {
             </h1>
 
             <div className={aboutStyles["box-container"]}>
-              {servicesList.map((ele) => {
+              {servicesList?.map((ele) => {
                 return <Service service={ele} aboutStyles={aboutStyles} />;
               })}
             </div>
@@ -70,14 +70,14 @@ export default function About() {
             </h1>
 
             <div className={aboutStyles["box-container"]}>
-              {teamMemberList.map((ele) => {
+              {teamMemberList?.map((ele) => {
                 return <Member member={ele} aboutStyles={aboutStyles} />;
               })}
             </div>
           </section>
 
           <section className={aboutStyles["icons-container"]}>
-            {iconsList.map((ele) => {
+            {iconsList?.map((ele) => {
               return <Icon member={ele} aboutStyles={aboutStyles} />;
             })}
           </section>

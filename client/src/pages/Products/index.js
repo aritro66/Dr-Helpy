@@ -28,7 +28,7 @@ export default function Products() {
       <Navbar styles={productsStyles} />
       <div className={"container d-flex flex-wrap justify-content-center"}>
         {productdata &&
-          productdata.map((ele) => {
+          productdata?.map((ele) => {
             return (
               <Product
                 product={ele}

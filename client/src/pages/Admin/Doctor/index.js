@@ -59,7 +59,7 @@ export default function DoctorS() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data2.map((ele, index) => {
+                  {data?.data2?.map((ele, index) => {
                     return (
                       <UnApprovedDoctor
                         index={index}
@@ -94,7 +94,7 @@ export default function DoctorS() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data1.map((ele, index) => {
+                  {data?.data1?.map((ele, index) => {
                     return (
                       <ApprovedDoctor
                         index={index}
