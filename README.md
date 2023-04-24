@@ -21,16 +21,18 @@ MERN Medical Store is a web-based application that allows users to buy medical p
 * Cloudinary: A cloud-based image and video management solution.
 * REST API: A web API that uses HTTP requests to access and manipulate data.
 
+## Deployed Link
+https://dr-helpy.vercel.app
+
 ## Video Demonstration
-
-
-https://user-images.githubusercontent.com/78261928/229975362-361c67a5-c493-4035-ae97-836086e5ba14.mp4
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0BZUGqwCqcs/0.jpg)](https://www.youtube.com/watch?v=0BZUGqwCqcs)
 
 ## Getting Started
 1. Clone the repository to your local machine.
 2. Navigate to the project directory in your terminal.
 3. Install the dependencies by running npm install.
-4. Start the development client by running npm start and server by running node server.js
+4. Set the environment variables in .env file for both client and server directory
+5. Start the development client by running npm start and server by running node server.js
 
 ## Contributing
 We welcome contributions to the project! If you would like to contribute, please create a pull request with your changes. Make sure to follow the project's coding style and conventions
