@@ -33,7 +33,7 @@ export default function DoctorRegister() {
       .then((res) => {
         if (res.status === 201) {
           toast.success(
-            "Application Submitted, Please keep checking your emails"
+            "Application Submitted, We will add your details to our website soon!"
           );
           navigate("/");
         }
