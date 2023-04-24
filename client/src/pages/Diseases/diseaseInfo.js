@@ -32,7 +32,7 @@ export default function DiseaseInfo() {
         </p>
         <ul>
           {data &&
-            data.symptoms.split(".").map((ele) => {
+            data?.symptoms?.split(".").map((ele) => {
               if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ul>
@@ -41,7 +41,7 @@ export default function DiseaseInfo() {
         </p>
         <ol>
           {data &&
-            data.cure.split(".").map((ele) => {
+            data?.cure?.split(".").map((ele) => {
               if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ol>
