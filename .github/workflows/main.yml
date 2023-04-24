@@ -48,6 +48,8 @@ jobs:
           echo CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }} >> .env
           echo CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }} >> .env
           echo CLOUDINARY_API_SECRETKEY=${{ secrets.CLOUDINARY_API_SECRETKEY }} >> .env
+          echo SAMPLETOKEN=${{ secrets.SAMPLETOKEN }} >> .env
+          echo SAMPLEOTP=${{ secrets.SAMPLEOTP }} >> .env
           cat .env
 
       - name: NPM install, build and test
