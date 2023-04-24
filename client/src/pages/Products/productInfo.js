@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 
 export default function ProductInfo() {
   const { id } = useParams();
-  console.log(id);
   const dispatch = useDispatch();
   const initialState = {
     rating: "",
@@ -62,7 +61,6 @@ export default function ProductInfo() {
     return cartdata.filter((item) => item._id === id).length !== 0;
   };
 
-  console.log(data);
   return (
     <>
       <Navbar styles={productsStyles} />

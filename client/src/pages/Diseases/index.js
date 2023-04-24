@@ -13,7 +13,7 @@ export default function Diseases() {
   useEffect(() => {
     dispatch(getDiseases());
   }, []);
-  console.log(data);
+
   return (
     <>
       <Navbar styles={Styles} />

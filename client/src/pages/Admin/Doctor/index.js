@@ -12,7 +12,6 @@ export default function DoctorS() {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => {
-    console.log(state);
     return {
       data1: state.doctorreducer?.data1?.data,
       data2: state.doctorreducer?.data2?.data,
@@ -24,7 +23,6 @@ export default function DoctorS() {
   }, []);
 
   const handleApprove = (id) => {
-    console.log(id);
     if (window.confirm("Do you want to approve this doctor") === true) {
       dispatch(approveDoctor(id));
     }
@@ -34,7 +32,6 @@ export default function DoctorS() {
     dispatch(deleteDoctor(id));
   };
 
-  console.log(data);
   return (
     <>
       <div className="container h-100 w-100 py-5">

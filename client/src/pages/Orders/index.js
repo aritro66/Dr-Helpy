@@ -9,10 +9,8 @@ export default function Orders() {
   const data = useSelector((state) => state.authReducer);
   const orderdata = useSelector((state) => state.orderreducer.data);
   useEffect(() => {
-    console.log(data.email);
     dispatch(fetchOrders(data.email));
   }, []);
-  console.log(orderdata);
   return (
     <section
       className="h-100"

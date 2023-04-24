@@ -10,7 +10,6 @@ const refreshToken = async () => {
         token: JSON.parse(localStorage.getItem("profile")).refreshToken,
       }
     );
-    console.log(res);
     return {
       accessToken: res.data.accessToken,
       refreshToken: res.data.refreshToken,

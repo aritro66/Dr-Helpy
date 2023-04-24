@@ -12,20 +12,16 @@ export default function ProductS() {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
   const data = useSelector((state) => {
-    console.log(state);
     return state.productreducer?.data?.data;
   });
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-  console.log(data);
 
   const handleDelete = (id) => {
-    console.log(id);
     dispatch(DeleteProduct(id));
   };
   const handleEdit = (id, inidata) => {
-    console.log(id, inidata);
     setId(() => id);
     setInitialData(() => inidata);
     setshowEditModal(() => true);

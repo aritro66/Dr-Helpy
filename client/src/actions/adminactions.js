@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 export const UserList = () => async (dispatch) => {
   try {
     const { data } = await fetchUsers();
-    console.log(data);
     dispatch({ type: FETCH_ALL_USERS, payload: data });
   } catch (error) {
     dispatch({ type: ERROR, error });

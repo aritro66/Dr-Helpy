@@ -20,7 +20,6 @@ export default function Login() {
     e.preventDefault();
     dispatch(login({ ...form }, navigate));
   };
-  console.log(form);
   return (
     <div id={loginStyles.login}>
       <form id={loginStyles.form} onSubmit={handleSubmit}>

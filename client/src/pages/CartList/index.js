@@ -28,7 +28,6 @@ export default function CartList() {
       console.log(error);
     }
   };
-  console.log(cartdata);
   let total = 0;
   return (
     <section

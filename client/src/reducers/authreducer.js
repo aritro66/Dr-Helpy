@@ -45,7 +45,6 @@ export default function authReducer(state = initialState, action) {
         admin: action.payload.admin,
       };
     case LOGOUT:
-      console.log("huha");
       localStorage.removeItem("profile");
       return {
         ...state,

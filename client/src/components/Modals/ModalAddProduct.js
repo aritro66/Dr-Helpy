@@ -15,7 +15,6 @@ export default function ModalAddProduct({ showModal, setShowModal }) {
     dispatch(AddProduct(form));
     setShowModal(false);
   };
-  console.log(form);
   return (
     <div
       className="modal fade show"

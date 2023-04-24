@@ -18,7 +18,6 @@ export default function ModalEditPredict({
     dispatch(updateProductDetails(id, form));
     setShowModal(false);
   };
-  console.log(form);
   return (
     <div
       className="modal fade show"

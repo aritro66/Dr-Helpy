@@ -22,7 +22,6 @@ export default function Users() {
     dispatch(UnBlockUser(id));
   };
 
-  console.log(data);
   return (
     <>
       <div className="container h-100 w-100 py-5">

@@ -12,20 +12,16 @@ export default function DiseaseS() {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
   const data = useSelector((state) => {
-    console.log(state);
     return state.diseasereducer?.data?.data;
   });
   useEffect(() => {
     dispatch(getDiseases());
   }, []);
-  console.log(data);
 
   const handleDelete = (id) => {
-    console.log(id);
     dispatch(DeleteDisease(id));
   };
   const handleEdit = (id, inidata) => {
-    console.log(id, inidata);
     setId(() => id);
     setInitialData(() => inidata);
     setshowEditModal(() => true);

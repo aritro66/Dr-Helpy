@@ -14,7 +14,6 @@ export default function DiseaseInfo() {
   useEffect(() => {
     dispatch(getDiseasesById(id));
   }, []);
-  console.log(data);
   return (
     <>
       <Navbar styles={Styles} />

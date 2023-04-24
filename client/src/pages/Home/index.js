@@ -18,7 +18,6 @@ export default function Home() {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-  console.log(data);
 
   return (
     <>

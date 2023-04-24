@@ -43,7 +43,6 @@ export default function DoctorRegister() {
         console.log(err);
       });
   };
-  console.log(form);
   return (
     <div id={registerStyles.register}>
       <form

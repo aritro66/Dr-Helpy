@@ -13,7 +13,6 @@ export default function Products() {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-  console.log(cartdata);
   const existsInCart = (id) => {
     return cartdata.filter((item) => item._id === id).length !== 0;
   };
@@ -22,7 +21,6 @@ export default function Products() {
     dispatch(addtocart(item));
   };
 
-  console.log(productdata);
   return (
     <>
       <Navbar styles={productsStyles} />
