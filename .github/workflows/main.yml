@@ -50,6 +50,7 @@ jobs:
           echo CLOUDINARY_API_SECRETKEY=${{ secrets.CLOUDINARY_API_SECRETKEY }} >> .env
           echo SAMPLETOKEN=${{ secrets.SAMPLETOKEN }} >> .env
           echo SAMPLEOTP=${{ secrets.SAMPLEOTP }} >> .env
+          echo CLIENT_BASE_URL=${{ secrets.CLIENT_BASE_URL }} >> .env
           cat .env
 
       - name: NPM install, build and test
