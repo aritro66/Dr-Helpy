@@ -19,7 +19,7 @@ export default function ProductInfo() {
     rating: "",
     description: "",
   };
-  const data = useSelector((state) => state.productreducer?.data?.data[0]);
+  const data = useSelector((state) => state.productreducer?.data?.data);
   const reviewdata = useSelector((state) => state.reviewreducer.data);
   const cartdata = useSelector((state) => state.cartreducer.data);
   const authdata = useSelector((state) => state.authReducer);

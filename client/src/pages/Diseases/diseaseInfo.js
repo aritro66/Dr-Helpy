@@ -23,18 +23,16 @@ export default function DiseaseInfo() {
         style={{ padding: "20px 30px", lineHeight: "200%" }}
       >
         <p className={diseaseStyles["main"]}>
-          <strong>{data?.length && data[0].name}</strong>
+          <strong>{data && data.name}</strong>
         </p>
 
-        {data?.length && (
-          <img className={diseaseStyles["img"]} src={`${data[0].url}`} />
-        )}
+        {data && <img className={diseaseStyles["img"]} src={`${data.url}`} />}
         <p>
           <strong>Symptoms</strong>
         </p>
         <ul>
-          {data?.length &&
-            data[0].symptoms.split(".").map((ele) => {
+          {data &&
+            data.symptoms.split(".").map((ele) => {
               if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ul>
@@ -42,8 +40,8 @@ export default function DiseaseInfo() {
           <strong>Medicines and cure</strong>
         </p>
         <ol>
-          {data?.length &&
-            data[0].cure.split(".").map((ele) => {
+          {data &&
+            data.cure.split(".").map((ele) => {
               if (ele.length !== 0) return <li>{ele}</li>;
             })}
         </ol>
