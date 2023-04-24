@@ -67,7 +67,7 @@ describe("/POST Successful user authentication check", function () {
     this.timeout(16000);
     request(server)
       .post("/signup")
-      .send({ ...test_user, otp: "1234" }) // data to be sent
+      .send({ ...test_user, email: "test@34gmail.com", otp: "1234" }) // data to be sent
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a("string");
