@@ -27,17 +27,18 @@ export default function Products() {
     <>
       <Navbar styles={productsStyles} />
       <div className={"container d-flex flex-wrap justify-content-center"}>
-        {productdata &&
-          productdata?.map((ele) => {
-            return (
-              <Product
-                product={ele}
-                productsStyles={productsStyles}
-                existsInCart={existsInCart}
-                handleClick={handleClick}
-              />
-            );
-          })}
+        {Array.isArray(productdata)
+          ? productdata?.map((ele) => {
+              return (
+                <Product
+                  product={ele}
+                  productsStyles={productsStyles}
+                  existsInCart={existsInCart}
+                  handleClick={handleClick}
+                />
+              );
+            })
+          : ""}
       </div>
       <Footer styles={productsStyles} />
     </>
